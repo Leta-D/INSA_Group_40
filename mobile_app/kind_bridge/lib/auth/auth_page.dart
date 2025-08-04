@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/get_instance.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:kind_bridge/auth/auth_controller.dart';
 import 'package:kind_bridge/auth/widgets/login_widget.dart';
 import 'package:kind_bridge/auth/widgets/signup_widget.dart';
 import 'package:kind_bridge/constants/colors.dart';
 
 class AuthPage extends StatelessWidget {
-  const AuthPage({super.key});
+  AuthPage({super.key});
+
+  final AuthController authController = Get.put(AuthController());
 
   @override
   Widget build(BuildContext context) {
@@ -27,38 +34,84 @@ class AuthPage extends StatelessWidget {
               ),
               color: appDarkGreen(1),
             ),
-            child: Align(
-              alignment: Alignment.bottomCenter,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 20.0,
-                  vertical: 8,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        "Sign Up",
-                        style: TextStyle(color: appWhite(1), fontSize: 20),
-                      ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 30.0),
+                  child: Text(
+                    "Small Acts, Big Changes",
+                    style: GoogleFonts.daiBannaSil(
+                      color: appWhite(1),
+                      fontSize: 25,
                     ),
-                    TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        "Sign In",
-                        style: TextStyle(color: appWhite(1), fontSize: 20),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
-              ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20.0,
+                    vertical: 8,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      TextButton(
+                        onPressed: () {
+                          authController.authPageIndex.value = 0;
+                        },
+                        child: Obx(
+                          () => Text(
+                            "Sign up",
+                            style: TextStyle(
+                              color: appWhite(1),
+                              fontSize:
+                                  authController.authPageIndex.value == 0
+                                      ? 25
+                                      : 20,
+                              fontWeight:
+                                  authController.authPageIndex.value == 0
+                                      ? FontWeight.bold
+                                      : FontWeight.normal,
+                            ),
+                          ),
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          authController.authPageIndex.value = 1;
+                        },
+                        child: Obx(
+                          () => Text(
+                            "Sign In",
+                            style: TextStyle(
+                              color: appWhite(1),
+                              fontSize:
+                                  authController.authPageIndex.value == 1
+                                      ? 25
+                                      : 20,
+                              fontWeight:
+                                  authController.authPageIndex.value == 1
+                                      ? FontWeight.bold
+                                      : FontWeight.normal,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
-            child: SignupWidget(),
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: Obx(
+              () =>
+                  [SignupWidget(), LoginWidget()][authController
+                      .authPageIndex
+                      .value],
+            ),
           ),
           Container(
             height: screenSize.height / 9.5,
