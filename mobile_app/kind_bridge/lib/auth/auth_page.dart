@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kind_bridge/auth/widgets/login_widget.dart';
+import 'package:kind_bridge/auth/widgets/signup_widget.dart';
 import 'package:kind_bridge/constants/colors.dart';
 
 class AuthPage extends StatelessWidget {
@@ -57,7 +58,7 @@ class AuthPage extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
-            child: LoginWidget(),
+            child: SignupWidget(),
           ),
           Container(
             height: screenSize.height / 9.5,
