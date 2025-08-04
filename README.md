@@ -6,13 +6,13 @@ A simple and impactful website with mobile app option connecting generous donors
 
 ---
 
-## 📱 Features
+## Features
 
-### 👥 Role-Based Access
+### Role-Based Access
 - Donor: Create offers, track status, manage your donations.
 - NGO: Browse nearby offers, accept donations, and mark them as received.
 
-### 🎯 Core Functionality
+### Core Functionality
 - Post Donations: Donors can list items with photos, category, and pickup info.
 - View & Accept Offers: NGOs can view available items and accept them.
 - Status Tracking: Real-time updates on donation status (Pending, Accepted, Collected).
@@ -21,7 +21,7 @@ A simple and impactful website with mobile app option connecting generous donors
 
 ---
 
-## 🏗️ Tech Stack
+## Tech Stack
 
 - Frontend: Flutter (Dart)
 - Backend: Firebase (Firestore, Auth, Storage)
@@ -31,7 +31,7 @@ A simple and impactful website with mobile app option connecting generous donors
 
 ---
 
-## 🔐 User Roles
+## User Roles
 
 ### Donor
 - Sign up / Log in
