@@ -4,6 +4,7 @@ import 'package:get/route_manager.dart';
 import 'package:kind_bridge/auth/actor_selection.dart';
 import 'package:kind_bridge/auth/auth_page.dart';
 import 'package:kind_bridge/common/pages/main_page.dart';
+import 'package:kind_bridge/donor/pages/donor_profile_page.dart';
 
 void main() async {
   // WidgetsFlutterBinding.ensureInitialized();
@@ -16,6 +17,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(home: Scaffold(body: Center(child: MainPage())));
+    return GetMaterialApp(
+      home: Scaffold(body: Center(child: DonorProfilePage())),
+    );
   }
 }

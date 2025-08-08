@@ -89,7 +89,7 @@ class MainPage extends StatelessWidget {
                 ),
               ),
               for (var item
-                  in (mainControler.userRole == "Donor"
+                  in (mainControler.userRole.value == "Donor"
                       ? mainControler.donorPages
                       : mainControler.ngoPages))
                 ListTile(
