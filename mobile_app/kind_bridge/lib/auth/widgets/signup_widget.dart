@@ -6,6 +6,7 @@ import 'package:get/route_manager.dart';
 import 'package:get/utils.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kind_bridge/auth/auth_controller.dart';
+import 'package:kind_bridge/common/pages/main_page.dart';
 import 'package:kind_bridge/constants/colors.dart';
 
 class SignupWidget extends StatelessWidget {
@@ -158,6 +159,7 @@ class SignupWidget extends StatelessWidget {
                       print(nameController.text);
                       print(emailController.text);
                       print(passwdController.text);
+                      Get.to(() => MainPage());
                     } else {
                       Get.snackbar(
                         "Account Creation Faild ",

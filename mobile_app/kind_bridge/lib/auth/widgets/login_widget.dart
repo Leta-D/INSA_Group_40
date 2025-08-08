@@ -5,6 +5,7 @@ import 'package:get/instance_manager.dart';
 import 'package:get/route_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kind_bridge/auth/auth_controller.dart';
+import 'package:kind_bridge/common/pages/main_page.dart';
 import 'package:kind_bridge/constants/colors.dart';
 
 class LoginWidget extends StatelessWidget {
@@ -140,6 +141,7 @@ class LoginWidget extends StatelessWidget {
                     if (authController.isValidCridentials.value) {
                       print(emailController.text);
                       print(passwdController.text);
+                      Get.to(() => MainPage());
                     } else {
                       Get.snackbar(
                         "Invalid Credentials",

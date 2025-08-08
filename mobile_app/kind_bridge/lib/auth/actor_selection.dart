@@ -55,8 +55,8 @@ class ActorSelection extends StatelessWidget {
               ),
               child: InkWell(
                 onTap: () {
-                  authController.userRole = "Donor";
-                  print(authController.userRole);
+                  authController.userRole.value = "Donor";
+                  print(authController.userRole.value);
                   Get.to(() => AuthPage());
                 },
                 child: Padding(
@@ -91,7 +91,7 @@ class ActorSelection extends StatelessWidget {
               ),
               child: InkWell(
                 onTap: () {
-                  authController.userRole = "NGO";
+                  authController.userRole.value = "NGO";
                   print(authController.userRole);
                   Get.to(() => AuthPage());
                 },

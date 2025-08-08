@@ -4,7 +4,7 @@ import 'package:kind_bridge/donor/pages/donor_home_page.dart';
 import 'package:kind_bridge/ngo/pages/ngo_home_page.dart';
 
 class MainPageController extends GetxController {
-  var userRole = 'Donor';
+  // var userRole = 'Donor'.obs;
 
   final List<Map<String, dynamic>> donorPages = [
     {'icon': CupertinoIcons.home, 'label': "Home", 'target': DonorHomePage()},

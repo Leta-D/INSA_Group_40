@@ -7,13 +7,13 @@ import 'package:get/state_manager.dart';
 import 'package:kind_bridge/constants/colors.dart';
 
 class AuthController extends GetxController {
-  var authPageIndex = 0.obs;
+  var authPageIndex = 1.obs;
 
   var isPasswdVisible = false.obs;
 
   var isValidCridentials = true.obs;
 
-  String userRole = "";
+  var userRole = "".obs;
 
   Future<void> checkSignupValidity(
     String name,

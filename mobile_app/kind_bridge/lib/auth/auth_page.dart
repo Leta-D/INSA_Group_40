@@ -56,26 +56,31 @@ class AuthPage extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      TextButton(
-                        onPressed: () {
-                          authController.authPageIndex.value = 0;
-                        },
-                        child: Obx(
-                          () => Text(
-                            "Sign up",
-                            style: TextStyle(
-                              color: appWhite(1),
-                              fontSize:
-                                  authController.authPageIndex.value == 0
-                                      ? 25
-                                      : 20,
-                              fontWeight:
-                                  authController.authPageIndex.value == 0
-                                      ? FontWeight.bold
-                                      : FontWeight.normal,
-                            ),
-                          ),
-                        ),
+                      Obx(
+                        () =>
+                            authController.userRole.value == "Donor"
+                                ? TextButton(
+                                  onPressed: () {
+                                    authController.authPageIndex.value = 0;
+                                  },
+                                  child: Text(
+                                    "Sign up",
+                                    style: TextStyle(
+                                      color: appWhite(1),
+                                      fontSize:
+                                          authController.authPageIndex.value ==
+                                                  0
+                                              ? 25
+                                              : 20,
+                                      fontWeight:
+                                          authController.authPageIndex.value ==
+                                                  0
+                                              ? FontWeight.bold
+                                              : FontWeight.normal,
+                                    ),
+                                  ),
+                                )
+                                : SizedBox(width: 20),
                       ),
                       TextButton(
                         onPressed: () {
