@@ -16,8 +16,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      home: Scaffold(body: Center(child: ActorSelection())),
-    );
+    return GetMaterialApp(home: Scaffold(body: Center(child: MainPage())));
   }
 }

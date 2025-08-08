@@ -99,11 +99,16 @@ class ActorSelection extends StatelessWidget {
                   padding: const EdgeInsets.all(20),
                   child: Column(
                     children: [
-                      Image.asset(
-                        "assets/icons/volunteer_activism.png",
+                      // Image.asset(
+                      //   "assets/icons/volunteer_activism.png",
+                      //   color: appDarkGreen(1),
+                      //   width: 45,
+                      //   fit: BoxFit.cover,
+                      // ),
+                      Icon(
+                        Icons.volunteer_activism,
                         color: appDarkGreen(1),
-                        width: 45,
-                        fit: BoxFit.cover,
+                        size: 45,
                       ),
                       Text(
                         "I'm an NGO",

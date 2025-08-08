@@ -27,6 +27,33 @@ class MainPage extends StatelessWidget {
           backgroundColor: appWhite(1),
           child: ListView(
             children: [
+              InkWell(
+                onTap: () => Get.back(),
+
+                child: Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        const Color.fromARGB(255, 5, 48, 18),
+                        const Color.fromARGB(255, 46, 131, 71),
+                        const Color.fromARGB(255, 79, 160, 103),
+                      ],
+                    ),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 10.0, top: 10),
+                    child: Row(
+                      children: [
+                        Icon(
+                          CupertinoIcons.clear_circled,
+                          size: 30,
+                          color: appRed(1),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
               DrawerHeader(
                 duration: Duration(seconds: 1),
                 decoration: BoxDecoration(
@@ -61,7 +88,10 @@ class MainPage extends StatelessWidget {
                   ],
                 ),
               ),
-              for (var item in mainControler.donorPages)
+              for (var item
+                  in (mainControler.userRole == "Donor"
+                      ? mainControler.donorPages
+                      : mainControler.ngoPages))
                 ListTile(
                   title: Row(
                     children: [
@@ -117,7 +147,7 @@ class MainPage extends StatelessWidget {
         ),
 
         body:
-            mainControler.donorPages[mainControler
+            mainControler.ngoPages[mainControler
                 .currentPageIndex
                 .value]['target'],
       ),
