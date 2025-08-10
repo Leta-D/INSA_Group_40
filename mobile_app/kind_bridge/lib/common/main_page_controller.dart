@@ -38,7 +38,7 @@ class MainPageController extends GetxController {
   ];
 
   final List<Map<String, dynamic>> ngoPages = [
-    {'icon': CupertinoIcons.home, 'label': "Home", 'target': DonorHomePage()},
+    {'icon': CupertinoIcons.home, 'label': "Home", 'target': NgoHomePage()},
     {
       'icon': CupertinoIcons.search,
       'label': "Find Donations",

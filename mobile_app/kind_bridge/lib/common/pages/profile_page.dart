@@ -21,8 +21,6 @@ class ProfilePage extends StatelessWidget {
     {"icon": Icons.location_on, "label": "NGO Address"},
   ];
 
-  // final mainController = Get.lazyPut(() =>MainPageController());
-
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.sizeOf(context);
@@ -70,10 +68,13 @@ class ProfilePage extends StatelessWidget {
                   Center(
                     child: ClipOval(
                       clipBehavior: Clip.hardEdge,
-                      child: Container(
+                      child: Image.asset(
+                        "assets/icons/kind_bridge_logo.png",
+                        fit: BoxFit.cover,
                         width: 100,
                         height: 100,
-                        color: appRed(1),
+                        color: appWhite(0.9),
+                        colorBlendMode: BlendMode.softLight,
                       ),
                     ),
                   ),
@@ -123,7 +124,7 @@ class ProfilePage extends StatelessWidget {
                     ),
                     child: Column(
                       children: [
-                        for (var data in ngoAccountDetail)
+                        for (var data in donorAccountDetail)
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 8.0),
                             child: Row(

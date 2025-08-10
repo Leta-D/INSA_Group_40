@@ -14,11 +14,11 @@ class MainPage extends StatelessWidget {
   MainPage({super.key});
 
   final mainControler = Get.put(MainPageController());
-  // final AuthController authController = Get.put(AuthController());
+  final AuthController authController = Get.put(AuthController());
 
   @override
   Widget build(BuildContext context) {
-    // mainControler.init(authController.userRole.value);
+    mainControler.userRole.value = authController.userRole.value;
 
     Size screenSize = MediaQuery.sizeOf(context);
     return Obx(
@@ -81,10 +81,11 @@ class MainPage extends StatelessWidget {
                     // ),
                     ClipOval(
                       clipBehavior: Clip.hardEdge,
-                      child: Container(
+                      child: Image.asset(
+                        "assets/icons/kind_bridge_logo.png",
+                        fit: BoxFit.cover,
                         width: 100,
                         height: 100,
-                        color: appRed(1),
                       ),
                     ),
                     SizedBox(
@@ -103,10 +104,11 @@ class MainPage extends StatelessWidget {
                   ],
                 ),
               ),
-              for (var item
-                  in (mainControler.userRole.value == "Donor"
-                      ? mainControler.donorPages
-                      : mainControler.ngoPages))
+              // for (var item
+              //     in (mainControler.userRole.value == "Donor"
+              //         ? mainControler.donorPages
+              //         : mainControler.ngoPages))
+              for (var item in mainControler.selectDrawerPages())
                 ListTile(
                   title: Row(
                     children: [
@@ -121,12 +123,10 @@ class MainPage extends StatelessWidget {
                     ],
                   ),
                   onTap: () {
-                    print(
-                      "========================================================leta",
-                    );
-                    print(mainControler.donorPages.indexOf(item));
+                    print("=======================================leta");
+                    print(mainControler.selectDrawerPages().indexOf(item));
                     mainControler.currentPageIndex.value = mainControler
-                        .donorPages
+                        .selectDrawerPages()
                         .indexOf(item);
                     Get.back();
                   },
@@ -151,9 +151,7 @@ class MainPage extends StatelessWidget {
                 alignment: Alignment.centerLeft,
                 child: TextButton.icon(
                   style: ButtonStyle(
-                    padding: MaterialStatePropertyAll(
-                      EdgeInsets.only(left: 20),
-                    ),
+                    padding: WidgetStatePropertyAll(EdgeInsets.only(left: 20)),
                   ),
                   onPressed: () {},
                   label: Text("Log Out", style: TextStyle(color: appRed(1))),
@@ -165,9 +163,12 @@ class MainPage extends StatelessWidget {
         ),
 
         body:
-            (mainControler.userRole.value == "Donor"
-                ? mainControler.donorPages
-                : mainControler.ngoPages)[mainControler
+            // (mainControler.userRole.value == "Donor"
+            //     ? mainControler.donorPages
+            //     : mainControler.ngoPages)[mainControler
+            //     .currentPageIndex
+            //     .value]['target'],
+            (mainControler.selectDrawerPages())[mainControler
                 .currentPageIndex
                 .value]['target'],
       ),
