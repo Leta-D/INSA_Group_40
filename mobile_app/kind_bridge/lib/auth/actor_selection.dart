@@ -23,12 +23,31 @@ class ActorSelection extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            ClipOval(
+              child: Image.asset(
+                "assets/icons/kind_bridge_logo.png",
+                width: 200,
+                height: 200,
+                fit: BoxFit.cover,
+              ),
+            ),
             Text(
-              "Together, we can build a bridge between need and generosity",
+              "Kind Bridge",
               textAlign: TextAlign.center,
               style: GoogleFonts.permanentMarker(
                 color: appDarkGreen(1),
-                fontSize: 22,
+                fontSize: 30,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 30.0),
+              child: Text(
+                "Together, we can build a bridge between need and generosity",
+                textAlign: TextAlign.center,
+                style: GoogleFonts.permanentMarker(
+                  color: appDarkGreen(1),
+                  fontSize: 22,
+                ),
               ),
             ),
             Padding(

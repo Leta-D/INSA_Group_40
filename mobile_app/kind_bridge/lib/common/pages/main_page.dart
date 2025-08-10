@@ -20,45 +20,61 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     mainControler.userRole.value = authController.userRole.value;
 
+    final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
     Size screenSize = MediaQuery.sizeOf(context);
     return Obx(
       () => Scaffold(
+        key: _scaffoldKey,
         appBar: AppBar(
+          leadingWidth: 60,
+          leading: Padding(
+            padding: const EdgeInsets.only(left: 10.0),
+            child: InkWell(
+              onTap: () => _scaffoldKey.currentState!.openDrawer(),
+              child: ClipOval(
+                child: Image.asset(
+                  "assets/icons/kind_bridge_logo.png",
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+          ),
           toolbarHeight: 70,
-          title: Text('Main Page', style: TextStyle(color: appDarkGreen(1))),
+          title: Text('Kind Bridge', style: TextStyle(color: appDarkGreen(1))),
           iconTheme: IconThemeData(color: appDarkGreen(1)),
         ),
         drawer: Drawer(
           backgroundColor: appWhite(1),
           child: ListView(
             children: [
-              InkWell(
-                onTap: () => Get.back(),
+              // InkWell(
+              //   onTap: () => Get.back(),
 
-                child: Container(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        const Color.fromARGB(255, 5, 48, 18),
-                        const Color.fromARGB(255, 46, 131, 71),
-                        const Color.fromARGB(255, 79, 160, 103),
-                      ],
-                    ),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 10.0, top: 10),
-                    child: Row(
-                      children: [
-                        Icon(
-                          CupertinoIcons.clear_circled,
-                          size: 30,
-                          color: appRed(1),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
+              //   child: Container(
+              //     decoration: BoxDecoration(
+              //       gradient: LinearGradient(
+              //         colors: [
+              //           const Color.fromARGB(255, 5, 48, 18),
+              //           const Color.fromARGB(255, 46, 131, 71),
+              //           const Color.fromARGB(255, 79, 160, 103),
+              //         ],
+              //       ),
+              //     ),
+              //     child: Padding(
+              //       padding: const EdgeInsets.only(left: 10.0, top: 10),
+              //       child: Row(
+              //         children: [
+              //           Icon(
+              //             CupertinoIcons.clear_circled,
+              //             size: 30,
+              //             color: appRed(1),
+              //           ),
+              //         ],
+              //       ),
+              //     ),
+              //   ),
+              // ),
               DrawerHeader(
                 duration: Duration(seconds: 1),
                 decoration: BoxDecoration(
@@ -103,33 +119,74 @@ class MainPage extends StatelessWidget {
               //         ? mainControler.donorPages
               //         : mainControler.ngoPages))
               for (var item in mainControler.selectDrawerPages())
-                ListTile(
-                  title: Row(
-                    children: [
-                      Icon(item['icon']),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 20.0),
-                        child: Text(
-                          item['label'],
-                          style: GoogleFonts.aBeeZee(fontSize: 20),
-                        ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: DecoratedBox(
+                    decoration:
+                        (mainControler.selectDrawerPages().indexOf(item) ==
+                                mainControler.currentPageIndex.value)
+                            ? BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              // border: Border.all(color: appDarkGreen(1)),
+                              // color: Color.fromARGB(255, 195, 243, 209),
+                              gradient: LinearGradient(
+                                colors: [
+                                  const Color.fromARGB(255, 197, 238, 209),
+                                  const Color.fromARGB(255, 134, 238, 165),
+                                  const Color.fromARGB(255, 186, 235, 200),
+                                ],
+                              ),
+                            )
+                            : BoxDecoration(),
+                    child: ListTile(
+                      title: Row(
+                        children: [
+                          Icon(
+                            item['icon'],
+                            color:
+                                (mainControler.selectDrawerPages().indexOf(
+                                          item,
+                                        ) ==
+                                        mainControler.currentPageIndex.value)
+                                    ? appBlack(1)
+                                    : appBlack(0.6),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 20.0),
+                            child: Text(
+                              item['label'],
+                              style: GoogleFonts.aBeeZee(
+                                fontSize: 20,
+                                color:
+                                    (mainControler.selectDrawerPages().indexOf(
+                                              item,
+                                            ) ==
+                                            mainControler
+                                                .currentPageIndex
+                                                .value)
+                                        ? appBlack(1)
+                                        : appBlack(0.6),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
+                      onTap: () {
+                        print("=======================================leta");
+                        print(mainControler.selectDrawerPages().indexOf(item));
+                        mainControler.currentPageIndex.value = mainControler
+                            .selectDrawerPages()
+                            .indexOf(item);
+                        Get.back();
+                      },
+                    ),
                   ),
-                  onTap: () {
-                    print("=======================================leta");
-                    print(mainControler.selectDrawerPages().indexOf(item));
-                    mainControler.currentPageIndex.value = mainControler
-                        .selectDrawerPages()
-                        .indexOf(item);
-                    Get.back();
-                  },
                 ),
               Align(
                 alignment: Alignment.centerLeft,
                 child: Padding(
                   padding: const EdgeInsets.only(
-                    top: 140.0,
+                    top: 220.0,
                     left: 18,
                     bottom: 20,
                   ),
