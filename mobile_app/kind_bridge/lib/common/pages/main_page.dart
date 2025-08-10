@@ -73,12 +73,6 @@ class MainPage extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    // CircleAvatar(
-                    //   radius: 40,
-                    //   backgroundImage: AssetImage(
-                    //     "asets/icons/person_heart.png",
-                    //   ),
-                    // ),
                     ClipOval(
                       clipBehavior: Clip.hardEdge,
                       child: Image.asset(
@@ -117,7 +111,7 @@ class MainPage extends StatelessWidget {
                         padding: const EdgeInsets.only(left: 20.0),
                         child: Text(
                           item['label'],
-                          style: GoogleFonts.monofett(fontSize: 20),
+                          style: GoogleFonts.aBeeZee(fontSize: 20),
                         ),
                       ),
                     ],
@@ -135,15 +129,25 @@ class MainPage extends StatelessWidget {
                 alignment: Alignment.centerLeft,
                 child: Padding(
                   padding: const EdgeInsets.only(
-                    top: 210.0,
-                    left: 20,
-                    bottom: 10,
+                    top: 140.0,
+                    left: 18,
+                    bottom: 20,
                   ),
                   child: TextButton.icon(
                     style: ButtonStyle(),
                     onPressed: () {},
-                    label: Text("Dark Mode"),
-                    icon: Icon(CupertinoIcons.moon),
+                    label: Text(
+                      "Dark Mode",
+                      style: GoogleFonts.aBeeZee(
+                        fontSize: 18,
+                        color: appDarkGreen(1),
+                      ),
+                    ),
+                    icon: Icon(
+                      CupertinoIcons.moon,
+                      size: 25,
+                      color: appDarkGreen(1),
+                    ),
                   ),
                 ),
               ),
@@ -151,11 +155,14 @@ class MainPage extends StatelessWidget {
                 alignment: Alignment.centerLeft,
                 child: TextButton.icon(
                   style: ButtonStyle(
-                    padding: WidgetStatePropertyAll(EdgeInsets.only(left: 20)),
+                    padding: WidgetStatePropertyAll(EdgeInsets.only(left: 30)),
                   ),
                   onPressed: () {},
-                  label: Text("Log Out", style: TextStyle(color: appRed(1))),
-                  icon: Icon(CupertinoIcons.clear, color: appRed(1)),
+                  label: Text(
+                    "Log Out",
+                    style: TextStyle(color: appRed(1), fontSize: 18),
+                  ),
+                  icon: Icon(Icons.logout, color: appRed(1), size: 25),
                 ),
               ),
             ],
