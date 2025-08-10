@@ -1,15 +1,27 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:kind_bridge/common/main_page_controller.dart';
 import 'package:kind_bridge/constants/colors.dart';
 
-class DonorProfilePage extends StatelessWidget {
+class ProfilePage extends StatelessWidget {
   // change the label data with user data from firebase fetched in main_page_controller
-  final List<Map<String, dynamic>> accountDetail = [
+  final List<Map<String, dynamic>> donorAccountDetail = [
     {"icon": CupertinoIcons.person, "label": "User Name"},
     {"icon": CupertinoIcons.mail, "label": "User Email"},
     {"icon": CupertinoIcons.phone, "label": "Phone Number"},
     {"icon": Icons.volunteer_activism_sharp, "label": "70 Donated"},
   ];
+
+  final List<Map<String, dynamic>> ngoAccountDetail = [
+    {"icon": CupertinoIcons.person, "label": "NGO Name"},
+    {"icon": CupertinoIcons.mail, "label": "NGO Email"},
+    {"icon": CupertinoIcons.phone, "label": "Phone Number"},
+    {"icon": Icons.location_on, "label": "NGO Address"},
+  ];
+
+  // final mainController = Get.lazyPut(() =>MainPageController());
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +64,7 @@ class DonorProfilePage extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(vertical: 50),
                     child: Text(
                       "User Name",
-                      style: TextStyle(color: Colors.white, fontSize: 30),
+                      style: TextStyle(color: Colors.white, fontSize: 35),
                     ),
                   ),
                   Center(
@@ -67,6 +79,7 @@ class DonorProfilePage extends StatelessWidget {
                   ),
                   Text(
                     "Donor",
+                    // mainController.userRole.value,
                     style: TextStyle(color: appDarkGreen(1), fontSize: 16),
                   ),
                   Align(
@@ -105,12 +118,12 @@ class DonorProfilePage extends StatelessWidget {
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                     decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 113, 206, 136),
+                      color: const Color.fromARGB(255, 168, 218, 180),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Column(
                       children: [
-                        for (var data in accountDetail)
+                        for (var data in ngoAccountDetail)
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 8.0),
                             child: Row(

@@ -1,15 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kind_bridge/common/pages/profile_page.dart';
 import 'package:kind_bridge/donor/pages/donate_page.dart';
 import 'package:kind_bridge/donor/pages/donor_home_page.dart';
-import 'package:kind_bridge/donor/pages/donor_profile_page.dart';
+// import 'package:kind_bridge/donor/pages/donor_profile_page.dart';
 import 'package:kind_bridge/donor/pages/my_Donation_page.dart';
 import 'package:kind_bridge/ngo/pages/accepted_donation_page.dart';
 import 'package:kind_bridge/ngo/pages/find_donation_page.dart';
 import 'package:kind_bridge/ngo/pages/map_page.dart';
 import 'package:kind_bridge/ngo/pages/ngo_home_page.dart';
-import 'package:kind_bridge/ngo/pages/ngo_profile_page.dart';
+// import 'package:kind_bridge/ngo/pages/ngo_profile_page.dart';
 
 class MainPageController extends GetxController {
   final List<Map<String, dynamic>> donorPages = [
@@ -32,7 +33,7 @@ class MainPageController extends GetxController {
     {
       'icon': CupertinoIcons.person,
       'label': "Profile",
-      'target': DonorProfilePage(),
+      'target': ProfilePage(),
     },
   ];
 
@@ -57,7 +58,7 @@ class MainPageController extends GetxController {
     {
       'icon': CupertinoIcons.person,
       'label': "Profile",
-      'target': NgoProfilePage(),
+      'target': ProfilePage(),
     },
   ];
 
@@ -65,16 +66,16 @@ class MainPageController extends GetxController {
     {
       'icon': CupertinoIcons.person,
       'label': "Profile",
-      'target': NgoProfilePage(),
+      'target': ProfilePage(),
     },
     {
       'icon': CupertinoIcons.person,
       'label': "Profile",
-      'target': NgoProfilePage(),
+      'target': ProfilePage(),
     },
   ];
 
-  var userRole = "".obs;
+  var userRole = "Donor".obs;
   var currentPageIndex = 0.obs;
 
   // this function will choose drawer pages based on userRole

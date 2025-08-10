@@ -26,7 +26,7 @@ class LoginWidget extends StatelessWidget {
           "Welcome Back !",
           style: GoogleFonts.damion(
             color: appDarkGreen(1),
-            fontSize: 30,
+            fontSize: 35,
             fontWeight: FontWeight.bold,
           ),
         ),

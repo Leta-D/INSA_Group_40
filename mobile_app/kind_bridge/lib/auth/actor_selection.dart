@@ -5,12 +5,14 @@ import 'package:get/route_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kind_bridge/auth/auth_controller.dart';
 import 'package:kind_bridge/auth/auth_page.dart';
+import 'package:kind_bridge/common/main_page_controller.dart';
 import 'package:kind_bridge/constants/colors.dart';
 
 class ActorSelection extends StatelessWidget {
   ActorSelection({super.key});
 
   final authController = Get.put(AuthController());
+  // final mainController = Get.put(MainPageController());
 
   @override
   Widget build(BuildContext context) {
@@ -56,6 +58,7 @@ class ActorSelection extends StatelessWidget {
               child: InkWell(
                 onTap: () {
                   authController.userRole.value = "Donor";
+                  // mainController.userRole.value = "Donor";
                   print(authController.userRole.value);
                   Get.to(() => AuthPage());
                 },
@@ -92,6 +95,7 @@ class ActorSelection extends StatelessWidget {
               child: InkWell(
                 onTap: () {
                   authController.userRole.value = "NGO";
+                  // mainController.userRole.value = "NGO";
                   print(authController.userRole);
                   Get.to(() => AuthPage());
                 },

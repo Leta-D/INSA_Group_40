@@ -11,132 +11,144 @@ import 'package:kind_bridge/constants/colors.dart';
 class AuthPage extends StatelessWidget {
   AuthPage({super.key});
 
-  final AuthController authController = Get.put(AuthController());
+  final AuthController authController = Get.find<AuthController>();
 
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.sizeOf(context);
     return Scaffold(
       backgroundColor: appWhite(1),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Container(
-            height: screenSize.height / 4.5,
-            width: screenSize.width,
-            decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(color: appBlack(1), blurRadius: 5, spreadRadius: 2),
-              ],
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(40),
-                bottomRight: Radius.circular(40),
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              height: screenSize.height / 4.5,
+              width: screenSize.width,
+              decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(color: appBlack(1), blurRadius: 5, spreadRadius: 2),
+                ],
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(40),
+                  bottomRight: Radius.circular(40),
+                ),
+                color: appDarkGreen(1),
               ),
-              color: appDarkGreen(1),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 30.0),
-                  child: Text(
-                    "Small Acts, Big Changes",
-                    style: GoogleFonts.daiBannaSil(
-                      color: appWhite(1),
-                      fontSize: 25,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 30.0),
+                    child: Text(
+                      "Small Acts, Big Changes",
+                      style: GoogleFonts.daiBannaSil(
+                        color: appWhite(1),
+                        fontSize: 25,
+                      ),
                     ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 20.0,
-                    vertical: 8,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Obx(
-                        () =>
-                            authController.userRole.value == "Donor"
-                                ? TextButton(
-                                  onPressed: () {
-                                    authController.authPageIndex.value = 0;
-                                  },
-                                  child: Text(
-                                    "Sign up",
-                                    style: TextStyle(
-                                      color: appWhite(1),
-                                      fontSize:
-                                          authController.authPageIndex.value ==
-                                                  0
-                                              ? 25
-                                              : 20,
-                                      fontWeight:
-                                          authController.authPageIndex.value ==
-                                                  0
-                                              ? FontWeight.bold
-                                              : FontWeight.normal,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 20.0,
+                      vertical: 8,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Obx(
+                          () =>
+                              authController.userRole.value == "Donor"
+                                  ? TextButton(
+                                    onPressed: () {
+                                      authController.authPageIndex.value = 0;
+                                    },
+                                    child: Text(
+                                      "Sign up",
+                                      style: TextStyle(
+                                        color: appWhite(1),
+                                        fontSize:
+                                            authController
+                                                        .authPageIndex
+                                                        .value ==
+                                                    0
+                                                ? 25
+                                                : 20,
+                                        fontWeight:
+                                            authController
+                                                        .authPageIndex
+                                                        .value ==
+                                                    0
+                                                ? FontWeight.bold
+                                                : FontWeight.normal,
+                                      ),
                                     ),
-                                  ),
-                                )
-                                : SizedBox(width: 20),
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          authController.authPageIndex.value = 1;
-                        },
-                        child: Obx(
-                          () => Text(
-                            "Sign In",
-                            style: TextStyle(
-                              color: appWhite(1),
-                              fontSize:
-                                  authController.authPageIndex.value == 1
-                                      ? 25
-                                      : 20,
-                              fontWeight:
-                                  authController.authPageIndex.value == 1
-                                      ? FontWeight.bold
-                                      : FontWeight.normal,
+                                  )
+                                  : SizedBox(width: 20),
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            authController.authPageIndex.value = 1;
+                          },
+                          child: Obx(
+                            () => Text(
+                              "Sign In",
+                              style: TextStyle(
+                                color: appWhite(1),
+                                fontSize:
+                                    authController.authPageIndex.value == 1
+                                        ? 25
+                                        : 20,
+                                fontWeight:
+                                    authController.authPageIndex.value == 1
+                                        ? FontWeight.bold
+                                        : FontWeight.normal,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            child: Obx(
-              () =>
-                  [SignupWidget(), LoginWidget()][authController
-                      .authPageIndex
-                      .value],
-            ),
-          ),
-          Container(
-            height: screenSize.height / 9.5,
-            width: screenSize.width,
-            decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: const Color.fromARGB(225, 0, 0, 0),
-                  blurRadius: 5,
-                  spreadRadius: 2,
-                ),
-              ],
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(40),
-                topRight: Radius.circular(40),
+                ],
               ),
-              color: appDarkGreen(1),
             ),
-          ),
-        ],
+            SizedBox(
+              height: screenSize.height / 1.5,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20.0,
+                  vertical: 30,
+                ),
+                child: Obx(
+                  () =>
+                      [SignupWidget(), LoginWidget()][authController
+                          .authPageIndex
+                          .value],
+                ),
+              ),
+            ),
+            Container(
+              height: screenSize.height / 9.5,
+              width: screenSize.width,
+              decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: const Color.fromARGB(225, 0, 0, 0),
+                    blurRadius: 5,
+                    spreadRadius: 2,
+                  ),
+                ],
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(40),
+                  topRight: Radius.circular(40),
+                ),
+                color: appDarkGreen(1),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

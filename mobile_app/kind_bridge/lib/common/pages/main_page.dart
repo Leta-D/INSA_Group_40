@@ -5,6 +5,7 @@ import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:get/route_manager.dart';
 import 'package:get/utils.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:kind_bridge/auth/auth_controller.dart';
 import 'package:kind_bridge/common/main_page_controller.dart';
 import 'package:kind_bridge/constants/colors.dart';
 import 'package:kind_bridge/donor/pages/donor_home_page.dart';
@@ -13,8 +14,12 @@ class MainPage extends StatelessWidget {
   MainPage({super.key});
 
   final mainControler = Get.put(MainPageController());
+  // final AuthController authController = Get.put(AuthController());
+
   @override
   Widget build(BuildContext context) {
+    // mainControler.init(authController.userRole.value);
+
     Size screenSize = MediaQuery.sizeOf(context);
     return Obx(
       () => Scaffold(
@@ -68,9 +73,19 @@ class MainPage extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    CircleAvatar(
-                      radius: 40,
-                      backgroundImage: AssetImage("icons/person_heart.png"),
+                    // CircleAvatar(
+                    //   radius: 40,
+                    //   backgroundImage: AssetImage(
+                    //     "asets/icons/person_heart.png",
+                    //   ),
+                    // ),
+                    ClipOval(
+                      clipBehavior: Clip.hardEdge,
+                      child: Container(
+                        width: 100,
+                        height: 100,
+                        color: appRed(1),
+                      ),
                     ),
                     SizedBox(
                       width: 170,
@@ -106,6 +121,9 @@ class MainPage extends StatelessWidget {
                     ],
                   ),
                   onTap: () {
+                    print(
+                      "========================================================leta",
+                    );
                     print(mainControler.donorPages.indexOf(item));
                     mainControler.currentPageIndex.value = mainControler
                         .donorPages
@@ -147,7 +165,9 @@ class MainPage extends StatelessWidget {
         ),
 
         body:
-            mainControler.ngoPages[mainControler
+            (mainControler.userRole.value == "Donor"
+                ? mainControler.donorPages
+                : mainControler.ngoPages)[mainControler
                 .currentPageIndex
                 .value]['target'],
       ),

@@ -26,7 +26,7 @@ class SignupWidget extends StatelessWidget {
           "Create an Account",
           style: GoogleFonts.damion(
             color: appDarkGreen(1),
-            fontSize: 30,
+            fontSize: 35,
             fontWeight: FontWeight.bold,
           ),
         ),
