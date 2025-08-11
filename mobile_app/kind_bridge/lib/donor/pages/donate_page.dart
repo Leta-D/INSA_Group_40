@@ -72,25 +72,117 @@ class DonatePage extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(top: 20.0, left: 15),
                       child: Text(
-                        "Title",
+                        "Donation Category",
                         style: GoogleFonts.aBeeZee(
                           color: appDarkGreen(1),
                           fontSize: 18,
                         ),
                       ),
                     ),
-                    TextField(
-                      decoration: InputDecoration(
-                        hintText: "Eg: Jackets or 10kg rice bag",
-                        hintStyle: GoogleFonts.daiBannaSil(
+                    DropdownMenu(
+                      hintText: "Tap to select a donation category",
+                      width: 280,
+                      dropdownMenuEntries: [
+                        DropdownMenuEntry(value: "cloth", label: "label"),
+                        DropdownMenuEntry(value: "value", label: "label"),
+                        DropdownMenuEntry(value: "value", label: "label"),
+                        DropdownMenuEntry(value: "value", label: "label"),
+                        DropdownMenuEntry(value: "value", label: "label"),
+                        DropdownMenuEntry(value: "value", label: "label"),
+                      ],
+                    ),
+
+                    Padding(
+                      padding: const EdgeInsets.only(top: 30),
+                      child: Text(
+                        "Tap to uplaod item image",
+                        style: GoogleFonts.aBeeZee(
                           color: appDarkGreen(1),
-                        ),
-                        border: OutlineInputBorder(),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: appDarkGreen(1)),
+                          fontSize: 18,
                         ),
                       ),
                     ),
+
+                    Padding(
+                      padding: const EdgeInsets.only(top: 15),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: InkWell(
+                              onTap: () {
+                                showModalBottomSheet(
+                                  context: context,
+                                  builder:
+                                      (context) => SafeArea(
+                                        child: Wrap(
+                                          children: [
+                                            ListTile(
+                                              leading: Icon(
+                                                Icons.photo_camera,
+                                                color: appDarkGreen(1),
+                                              ),
+                                              title: Text(
+                                                "Take a Photo",
+                                                style: GoogleFonts.aBeeZee(
+                                                  color: appDarkGreen(1),
+                                                  fontSize: 18,
+                                                ),
+                                              ),
+                                              onTap: () async {
+                                                Navigator.pop(context);
+                                                await commonController
+                                                    .pickFromGallery();
+                                              },
+                                            ),
+                                            ListTile(
+                                              leading: Icon(
+                                                Icons.photo_library,
+                                                color: appDarkGreen(1),
+                                              ),
+                                              title: Text(
+                                                "Choose from Gallery",
+                                                style: GoogleFonts.aBeeZee(
+                                                  color: appDarkGreen(1),
+                                                  fontSize: 18,
+                                                ),
+                                              ),
+                                              onTap: () async {
+                                                Navigator.pop(context);
+                                                await commonController
+                                                    .pickFromGallery();
+                                              },
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                );
+                              },
+                              child: Obx(
+                                () => Container(
+                                  height: 200,
+                                  decoration: BoxDecoration(
+                                    color: appDarkGreen(0.3),
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  child:
+                                      (commonController.selectedImage.value ==
+                                              null)
+                                          ? Image.asset(
+                                            "assets/icons/kind_bridge_logo.png",
+                                          )
+                                          : Image.file(
+                                            commonController
+                                                .selectedImage
+                                                .value!,
+                                          ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
                     Padding(
                       padding: const EdgeInsets.only(
                         top: 30,
@@ -107,22 +199,31 @@ class DonatePage extends StatelessWidget {
                     ),
                     InkWell(
                       onTap: () {
-                        // Implement location selection logic here
                         Get.snackbar(
-                          "Location Selected",
-                          "You can now select your location.",
+                          "Selecting Location",
+                          "The system will use your current location as donation pickup location!",
+                          colorText: appDarkGreen(1),
+                          icon: Image.asset(
+                            "assets/icons/kind_bridge_logo.png",
+                            width: 50,
+                            height: 50,
+                            fit: BoxFit.cover,
+                          ),
                         );
                         commonController
                             .getCurrentLocation()
                             .then((position) {
-                              // Handle the position as needed
-                              donateController.locationController.text =
-                                  "${position.latitude}, ${position.longitude}";
+                              donateController.location.value = [
+                                position.latitude,
+                                position.longitude,
+                              ];
                             })
                             .catchError((error) {
                               Get.snackbar(
-                                "Error",
+                                "Error: can't get location",
                                 "Failed to get current location: $error",
+                                backgroundColor: appRed(0.4),
+                                colorText: appWhite(1),
                               );
                             });
                       },
@@ -138,9 +239,13 @@ class DonatePage extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
-                              "Location",
-                              style: TextStyle(color: appDarkGreen(1)),
+                            Obx(
+                              () => Text(
+                                donateController.location.value.isEmpty
+                                    ? "Tap to select location"
+                                    : "X = ${donateController.location.value[0]}, Y = ${donateController.location.value[1]}",
+                                style: TextStyle(color: appDarkGreen(1)),
+                              ),
                             ),
                             Icon(
                               CupertinoIcons.location_solid,
@@ -192,18 +297,25 @@ class DonatePage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    TextField(
-                      decoration: InputDecoration(
-                        hintText: "Eg: Jackets or 10kg rice bag",
-                        hintStyle: GoogleFonts.daiBannaSil(
-                          color: appDarkGreen(1),
+                    DropdownMenu(
+                      hintText: "Select pickup time",
+                      width: 280,
+                      dropdownMenuEntries: [
+                        DropdownMenuEntry(
+                          value: "morning",
+                          label: "Morning (1 am - 4:30 am)",
                         ),
-                        border: OutlineInputBorder(),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: appDarkGreen(1)),
+                        DropdownMenuEntry(
+                          value: "afternoon",
+                          label: "Afternoon (6 pm - 11:30 pm)",
                         ),
-                      ),
+                        DropdownMenuEntry(
+                          value: "both",
+                          label: "Both (Morning or Afternoon)",
+                        ),
+                      ],
                     ),
+
                     Padding(
                       padding: const EdgeInsets.only(top: 20.0),
                       child: Row(

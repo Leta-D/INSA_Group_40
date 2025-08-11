@@ -1,5 +1,9 @@
+import 'dart:io';
+
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class CommonController extends GetxController {
   // Common controller logic can be added here
@@ -11,17 +15,14 @@ class CommonController extends GetxController {
     // Check if location services are enabled
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
-      // Location services are not enabled, return an error
       return Future.error('Location services are disabled.');
     }
 
     // Check for location permissions
     permission = await Geolocator.checkPermission();
     if (permission == LocationPermission.denied) {
-      // Request permission if it was denied
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
-        // Permissions are denied, return an error
         return Future.error('Location permissions are denied');
       }
     }
@@ -43,13 +44,44 @@ class CommonController extends GetxController {
     try {
       return await _getCurrentLocation();
     } catch (e) {
-      // Handle any errors that occur during the location retrieval
-      print('Error getting current location: $e');
-      Get.snackbar(
-        "Location Access Denied",
-        "Pleace enable location services and permissions to use this feature.",
+      return Future.error(
+        'Failed to get current location, Location Access Denied',
       );
-      return Future.error('Failed to get current location');
+    }
+  }
+
+  // camera and image related
+
+  var selectedImage = Rx<File?>(null);
+  final ImagePicker _picker = ImagePicker();
+
+  Future<void> pickFromGallery() async {
+    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+    if (image != null) {
+      selectedImage.value = File(image.path);
+    }
+  }
+
+  Future<void> pickFromCamera() async {
+    var status = await Permission.camera.status;
+    if (!status.isGranted) {
+      status = await Permission.camera.request();
+      if (!status.isGranted) {
+        print("Camera permission denied");
+        return; // Stop if permission denied
+      }
+    }
+    // final XFile? image = await _picker.pickImage(source: ImageSource.camera);
+    // if (image != null) {
+    //   selectedImage.value = File(image.path);
+    // }
+    try {
+      final XFile? image = await _picker.pickImage(source: ImageSource.camera);
+      if (image != null) {
+        selectedImage.value = File(image.path);
+      }
+    } catch (e) {
+      print("Error opening camera: $e");
     }
   }
 }
