@@ -78,6 +78,7 @@ class ActorSelection extends StatelessWidget {
                 onTap: () {
                   authController.userRole.value = "Donor";
                   // mainController.userRole.value = "Donor";
+                  authController.authPageIndex.value = 0;
                   print(authController.userRole.value);
                   Get.to(() => AuthPage());
                 },
@@ -115,6 +116,7 @@ class ActorSelection extends StatelessWidget {
                 onTap: () {
                   authController.userRole.value = "NGO";
                   // mainController.userRole.value = "NGO";
+                  authController.authPageIndex.value = 1;
                   print(authController.userRole);
                   Get.to(() => AuthPage());
                 },
