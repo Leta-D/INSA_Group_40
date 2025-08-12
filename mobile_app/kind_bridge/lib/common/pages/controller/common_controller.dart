@@ -71,17 +71,9 @@ class CommonController extends GetxController {
         return; // Stop if permission denied
       }
     }
-    // final XFile? image = await _picker.pickImage(source: ImageSource.camera);
-    // if (image != null) {
-    //   selectedImage.value = File(image.path);
-    // }
-    try {
-      final XFile? image = await _picker.pickImage(source: ImageSource.camera);
-      if (image != null) {
-        selectedImage.value = File(image.path);
-      }
-    } catch (e) {
-      print("Error opening camera: $e");
+    final XFile? image = await _picker.pickImage(source: ImageSource.camera);
+    if (image != null) {
+      selectedImage.value = File(image.path);
     }
   }
 }
