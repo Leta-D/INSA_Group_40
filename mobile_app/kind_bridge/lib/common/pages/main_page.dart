@@ -5,6 +5,7 @@ import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:get/route_manager.dart';
 import 'package:get/utils.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:kind_bridge/auth/actor_selection.dart';
 import 'package:kind_bridge/auth/auth_controller.dart';
 import 'package:kind_bridge/common/main_page_controller.dart';
 import 'package:kind_bridge/constants/colors.dart';
@@ -214,7 +215,42 @@ class MainPage extends StatelessWidget {
                   style: ButtonStyle(
                     padding: WidgetStatePropertyAll(EdgeInsets.only(left: 30)),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.dialog(
+                      AlertDialog(
+                        backgroundColor: appWhite(0.85),
+                        title: Text(
+                          "Log Out",
+                          style: GoogleFonts.aBeeZee(color: appDarkGreen(1)),
+                        ),
+                        content: Text(
+                          "Are you sure you want to log out?",
+                          style: GoogleFonts.aBeeZee(color: appDarkGreen(1)),
+                        ),
+                        actions: [
+                          TextButton(
+                            onPressed: () => Get.back(),
+                            child: Text(
+                              "Cancel",
+                              style: GoogleFonts.aBeeZee(
+                                color: appDarkGreen(1),
+                              ),
+                            ),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              // authController.logout();
+                              Get.offAll(() => ActorSelection());
+                            },
+                            child: Text(
+                              "Log Out",
+                              style: GoogleFonts.aBeeZee(color: appRed(1)),
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
                   label: Text(
                     "Log Out",
                     style: TextStyle(color: appRed(1), fontSize: 18),

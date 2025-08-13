@@ -141,7 +141,7 @@ class LoginWidget extends StatelessWidget {
                     if (authController.isValidCridentials.value) {
                       print(emailController.text);
                       print(passwdController.text);
-                      Get.to(() => MainPage());
+                      Get.offAll(() => MainPage());
                     } else {
                       Get.snackbar(
                         "Invalid Credentials",

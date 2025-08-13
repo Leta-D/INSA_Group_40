@@ -6,5 +6,4 @@ class DonateController extends GetxController {
   final titleController = TextEditingController();
   final descriptionController = TextEditingController();
   final quantityController = TextEditingController();
-  RxList location = [].obs;
 }

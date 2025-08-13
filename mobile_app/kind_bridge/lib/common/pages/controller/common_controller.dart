@@ -6,7 +6,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class CommonController extends GetxController {
-  // Common controller logic can be added here
+  var isLoadingLocation = false.obs;
+  RxList location = [].obs;
 
   Future<Position> _getCurrentLocation() async {
     bool serviceEnabled;
@@ -41,12 +42,15 @@ class CommonController extends GetxController {
   }
 
   Future<Position> getCurrentLocation() async {
+    isLoadingLocation.value = true;
     try {
       return await _getCurrentLocation();
     } catch (e) {
       return Future.error(
         'Failed to get current location, Location Access Denied',
       );
+    } finally {
+      isLoadingLocation.value = false;
     }
   }
 

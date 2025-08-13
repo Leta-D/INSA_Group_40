@@ -213,7 +213,7 @@ class DonatePage extends StatelessWidget {
                         commonController
                             .getCurrentLocation()
                             .then((position) {
-                              donateController.location.value = [
+                              commonController.location.value = [
                                 position.latitude,
                                 position.longitude,
                               ];
@@ -241,9 +241,9 @@ class DonatePage extends StatelessWidget {
                           children: [
                             Obx(
                               () => Text(
-                                donateController.location.value.isEmpty
+                                commonController.location.value.isEmpty
                                     ? "Tap to select location"
-                                    : "X = ${donateController.location.value[0]}, Y = ${donateController.location.value[1]}",
+                                    : "X = ${commonController.location.value[0]}, Y = ${commonController.location.value[1]}",
                                 style: TextStyle(color: appDarkGreen(1)),
                               ),
                             ),

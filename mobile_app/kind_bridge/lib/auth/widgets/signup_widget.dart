@@ -159,7 +159,7 @@ class SignupWidget extends StatelessWidget {
                       print(nameController.text);
                       print(emailController.text);
                       print(passwdController.text);
-                      Get.to(() => MainPage());
+                      Get.offAll(() => MainPage());
                     } else {
                       Get.snackbar(
                         "Account Creation Faild ",
