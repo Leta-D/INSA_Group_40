@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kind_bridge/common/pages/controller/common_controller.dart';
 import 'package:kind_bridge/constants/colors.dart';
+import 'package:kind_bridge/ngo/controller/app_map_controller.dart';
 import 'package:latlong2/latlong.dart';
 
 class MapPage extends StatelessWidget {
+  MapPage({super.key});
 
-  final mapController = Get.put(MapController());
+  final AppMapController mapController = Get.put(AppMapController());
+
+  final fmMapController = MapController();
 
   @override
   Widget build(BuildContext context) {
@@ -29,48 +32,89 @@ class MapPage extends StatelessWidget {
             height: 500,
             width: double.infinity,
             margin: const EdgeInsets.only(top: 20),
+            padding: const EdgeInsets.all(5),
             decoration: BoxDecoration(
-              color: Colors.grey[200],
+              color: const Color.fromARGB(255, 203, 236, 203),
               borderRadius: BorderRadius.circular(10),
             ),
-            child: mapController.c == 0? Center(
-              child: Column(
-                children: [
-                  CircularProgressIndicator(
-                    color: appDarkGreen(1),
-                  ),
-                  SizedBox(height: 20),
-                  Text(
-                    "Map will be displayed waiting for location access...",
-                    style: TextStyle(color: appDarkGreen(1), fontSize: 18),
-                  ),
-                ],
+            child: Center(
+              child: Obx(
+                () =>
+                    mapController.currentPosition.value == null
+                        ? Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            CircularProgressIndicator(color: appDarkGreen(1)),
+                            Text(
+                              "Map is loading...",
+                              style: TextStyle(
+                                color: appDarkGreen(1),
+                                fontSize: 18,
+                              ),
+                            ),
+                          ],
+                        )
+                        : FlutterMap(
+                          mapController: fmMapController,
+                          options: MapOptions(
+                            initialCenter: mapController.currentPosition.value!,
+                            initialZoom: 15.0,
+                            // onTap: (tapPosition, latLng) {
+                            //   // latLng is the LatLng of the touched point
+                            //   print(
+                            //     "Tapped at: ${latLng.latitude}, ${latLng.longitude}",
+                            //   );
+
+                            //   // Example: store it in your GetX controller
+                            //   // mapController.selectedPosition.value = latLng;
+                            // },
+                          ),
+
+                          children: [
+                            TileLayer(
+                              urlTemplate:
+                                  "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                              userAgentPackageName: "com.example.app",
+                            ),
+                            MarkerLayer(
+                              markers: [
+                                Marker(
+                                  point: mapController.currentPosition.value!,
+                                  width: 40,
+                                  height: 40,
+                                  child: Icon(
+                                    Icons.location_pin,
+                                    color: Colors.red,
+                                    size: 40,
+                                  ),
+                                ),
+                                Marker(
+                                  point: LatLng(
+                                    8.888989779900689,
+                                    38.81055106080113,
+                                  ),
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      Get.snackbar(
+                                        "Location",
+                                        "This is a sample location.",
+                                        snackPosition: SnackPosition.BOTTOM,
+                                        backgroundColor: Colors.white,
+                                        colorText: Colors.black,
+                                      );
+                                    },
+                                    child: Icon(
+                                      Icons.location_on,
+                                      color: Colors.blue,
+                                      size: 80,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
               ),
-            ): FlutterMap(
-              options: MapOptions(
-                initialCenter: _currentPosition!,
-                initialZoom: 15.0,
-              ),
-              children: [
-                TileLayer(
-                  urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-                  userAgentPackageName: 'com.example.app',
-                ),
-                MarkerLayer(
-                  markers: [
-                    Marker(
-                      point: LatLng(, longitude),
-                      width: 80,
-                      height: 80,
-                      child: const Icon(
-                        Icons.my_location,
-                        color: Colors.blue,
-                        size: 40,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
             ),
           ),
         ],

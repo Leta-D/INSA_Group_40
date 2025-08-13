@@ -1,20 +1,23 @@
-import 'package:get/get.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:get/get.dart';
 import 'package:kind_bridge/common/pages/controller/common_controller.dart';
 import 'package:latlong2/latlong.dart';
 
-class MapController extends GetxController {
+class AppMapController extends GetxController {
+  var currentPosition = Rx<LatLng?>(null);
+
   final commonController = Get.put(CommonController());
-  var currentPosition = Rxn<LatLng>();
+
+  // Add any additional methods or properties needed for the MapController
+
+  Future<void> _determinePosition() async {
+    Position position = await commonController.getCurrentLocation();
+    currentPosition.value = LatLng(position.latitude, position.longitude);
+  }
 
   @override
   void onInit() {
     super.onInit();
     _determinePosition();
-  }
-
-  Future<void> _determinePosition() async {
-    Position position = await commonController.getCurrentLocation();
-    currentPosition.value = LatLng(position.latitude, position.longitude);
   }
 }
