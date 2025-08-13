@@ -13,7 +13,7 @@ final List<DonationItem> dummyDonations = [
     longitude: 38.74,
     status: 'Available',
     ngoId: null,
-    imageUrl: 'https://example.com/images/jacket.png',
+    // imageUrl: 'https://example.com/images/jacket.png',
     createdAt: DateTime.now().subtract(Duration(days: 1)),
   ),
   DonationItem(

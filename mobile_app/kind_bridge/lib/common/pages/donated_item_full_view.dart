@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:kind_bridge/common/donation_item.dart';
 import 'package:kind_bridge/constants/colors.dart';
 
 class DonatedItemFullView extends StatelessWidget {
+  final DonationItem item;
+  const DonatedItemFullView({required this.item, super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,18 +22,26 @@ class DonatedItemFullView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Donation Item Title",
+              item.name,
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 10),
-            Image.asset(
-              "assets/icons/kind_bridge_logo.png",
-              height: 250,
-              width: double.infinity,
-              fit: BoxFit.cover,
-            ),
+            item.imageUrl == null
+                ? Image.asset(
+                  color: appBlack(1),
+                  "assets/icons/kind_bridge_logo.png",
+                  width: 120,
+                  height: 120,
+                  fit: BoxFit.cover,
+                )
+                : Image.network(
+                  item.imageUrl!,
+                  width: 120,
+                  height: 120,
+                  fit: BoxFit.cover,
+                ),
             Text(
-              "Description of the donation item goes here. It can be a detailed description that explains the purpose and impact of the donation.",
+              item.description ?? "Discription not provided",
               style: TextStyle(fontSize: 16),
             ),
             SizedBox(height: 20),
