@@ -2,7 +2,7 @@
 /* Reset and Base Styles */
 * {
     margin: 0;
-    padding: 0;
+    padding: 7;
     box-sizing: border-box;
     transition: all 0.3s ease;
 }
@@ -1097,4 +1097,5 @@ body.dark-mode .donation-form-container {
 body.dark-mode .history-item {
     background: #1e293b;
     border-color: #334155;
+
 }
