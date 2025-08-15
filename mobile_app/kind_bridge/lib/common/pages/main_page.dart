@@ -42,7 +42,13 @@ class MainPage extends StatelessWidget {
             ),
           ),
           toolbarHeight: 70,
-          title: Text('Kind Bridge', style: TextStyle(color: appDarkGreen(1))),
+          title: Text(
+            'Kind Bridge',
+            style: GoogleFonts.aboreto(
+              color: appDarkGreen(1),
+              fontWeight: FontWeight.bold,
+            ),
+          ),
           iconTheme: IconThemeData(color: appDarkGreen(1)),
         ),
         drawer: Drawer(

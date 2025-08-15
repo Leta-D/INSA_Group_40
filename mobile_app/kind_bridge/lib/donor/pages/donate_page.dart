@@ -8,6 +8,8 @@ import 'package:kind_bridge/constants/colors.dart';
 import 'package:kind_bridge/donor/controller/donate_controller.dart';
 
 class DonatePage extends StatelessWidget {
+  DonatePage({super.key});
+
   final donateController = Get.put(DonateController());
   final commonController = Get.put(CommonController());
 
