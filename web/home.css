@@ -2,7 +2,7 @@
 /* Reset and Base Styles */
 * {
     margin: 0;
-    padding: 7;
+    padding: 0;
     box-sizing: border-box;
     transition: all 0.3s ease;
 }
@@ -1099,3 +1099,4 @@ body.dark-mode .history-item {
     border-color: #334155;
 
 }
+
