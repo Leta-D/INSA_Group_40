@@ -179,7 +179,6 @@ class MainPage extends StatelessWidget {
                         ],
                       ),
                       onTap: () {
-                        print("=======================================leta");
                         print(mainControler.selectDrawerPages().indexOf(item));
                         mainControler.currentPageIndex.value = mainControler
                             .selectDrawerPages()

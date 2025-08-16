@@ -94,10 +94,6 @@ class MainPageController extends GetxController {
         print("Admin");
         currentPage = donorPages;
         break;
-      default:
-        print("nothing assigned to user role=======================");
-        currentPage = null;
-        break;
     }
     return currentPage;
   }

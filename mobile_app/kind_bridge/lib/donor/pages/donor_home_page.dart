@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/instance_manager.dart';
+import 'package:get/route_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:kind_bridge/common/main_page_controller.dart';
 import 'package:kind_bridge/constants/colors.dart';
+import 'package:kind_bridge/donor/controller/donate_controller.dart';
 import 'package:kind_bridge/donor/pages/donate_page.dart';
+import 'package:kind_bridge/donor/widgets/animated_dashboard.dart';
 import 'package:kind_bridge/donor/widgets/donated_frame_widget.dart';
 import 'package:kind_bridge/dummy_donation_item.dart';
 
 class DonorHomePage extends StatelessWidget {
+  DonorHomePage({super.key});
+
+  final donorController = Get.put(DonateController());
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.sizeOf(context);
@@ -35,51 +42,46 @@ class DonorHomePage extends StatelessWidget {
                 ),
               ),
 
-              Container(
-                margin: EdgeInsets.only(top: 30),
-                decoration: BoxDecoration(
-                  color: appDarkGreen(0.4),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: SizedBox(height: 250, width: screenSize.width),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 30.0),
+                child: LoopBackCarousel(),
               ),
 
-              Padding(
-                padding: EdgeInsets.only(top: 30.0),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: ElevatedButton.icon(
-                        onPressed: Get.put(() => DonatePage()),
-                        style: ButtonStyle(
-                          shape: WidgetStatePropertyAll(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                          ),
-                          padding: WidgetStatePropertyAll(
-                            EdgeInsets.symmetric(vertical: 10),
-                          ),
-                          backgroundColor: WidgetStatePropertyAll(
-                            appDarkGreen(1),
+              Row(
+                children: [
+                  Expanded(
+                    child: ElevatedButton.icon(
+                      onPressed: () {
+                        // mainController.currentPageIndex.value = 1;
+                      },
+                      style: ButtonStyle(
+                        shape: WidgetStatePropertyAll(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
                           ),
                         ),
-                        icon: Icon(
-                          Icons.volunteer_activism,
-                          color: appWhite(1),
-                          size: 30,
+                        padding: WidgetStatePropertyAll(
+                          EdgeInsets.symmetric(vertical: 10),
                         ),
-                        label: Padding(
-                          padding: EdgeInsets.only(left: 15.0),
-                          child: Text(
-                            "Donate Now",
-                            style: TextStyle(color: appWhite(1), fontSize: 18),
-                          ),
+                        backgroundColor: WidgetStatePropertyAll(
+                          appDarkGreen(1),
+                        ),
+                      ),
+                      icon: Icon(
+                        Icons.volunteer_activism,
+                        color: appWhite(1),
+                        size: 30,
+                      ),
+                      label: Padding(
+                        padding: EdgeInsets.only(left: 15.0),
+                        child: Text(
+                          "Donate Now",
+                          style: TextStyle(color: appWhite(1), fontSize: 18),
                         ),
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 30.0, left: 15),
