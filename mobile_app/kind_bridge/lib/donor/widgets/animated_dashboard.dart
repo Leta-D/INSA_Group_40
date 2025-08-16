@@ -9,12 +9,13 @@ Widget animatedDashboard() {
   final noOfDashboardItem = 5;
   Widget dashBoaredItemFrame(int index) {
     return Container(
+      clipBehavior: Clip.hardEdge,
       decoration: BoxDecoration(
         color:
             (noOfDashboardItem != index)
                 ? appDarkGreen(0.4)
                 : Colors.transparent,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(12),
       ),
       child:
           (index != noOfDashboardItem)
