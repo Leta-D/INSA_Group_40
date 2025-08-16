@@ -44,45 +44,9 @@ class DonorHomePage extends StatelessWidget {
 
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 30.0),
-                child: LoopBackCarousel(),
+                child: animatedDashboard(),
               ),
 
-              Row(
-                children: [
-                  Expanded(
-                    child: ElevatedButton.icon(
-                      onPressed: () {
-                        // mainController.currentPageIndex.value = 1;
-                      },
-                      style: ButtonStyle(
-                        shape: WidgetStatePropertyAll(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-                        padding: WidgetStatePropertyAll(
-                          EdgeInsets.symmetric(vertical: 10),
-                        ),
-                        backgroundColor: WidgetStatePropertyAll(
-                          appDarkGreen(1),
-                        ),
-                      ),
-                      icon: Icon(
-                        Icons.volunteer_activism,
-                        color: appWhite(1),
-                        size: 30,
-                      ),
-                      label: Padding(
-                        padding: EdgeInsets.only(left: 15.0),
-                        child: Text(
-                          "Donate Now",
-                          style: TextStyle(color: appWhite(1), fontSize: 18),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
               Padding(
                 padding: const EdgeInsets.only(top: 30.0, left: 15),
                 child: Text(

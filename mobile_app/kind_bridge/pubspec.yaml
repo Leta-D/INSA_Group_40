@@ -72,6 +72,12 @@ flutter:
     - assets/icons/person_heart.png
     - assets/icons/kind_bridge_logo.png
 
+    - assets/images/dashboard_image_1.jpg
+    - assets/images/dashboard_image_2.jpg
+    - assets/images/dashboard_image_3.jpg
+    - assets/images/dashboard_image_4.jpg
+    - assets/images/dashboard_image_5.jpg
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
 
