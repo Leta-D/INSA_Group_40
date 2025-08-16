@@ -6,7 +6,7 @@ class WidgetController extends GetxController {
   late PageController pageController;
   final currentPage = 1.0.obs;
 
-  final List<Color> items = List.generate(5, (index) => appDarkGreen(0.4));
+  // final List<Color> items = List.generate();
 
   @override
   void onInit() {
@@ -21,7 +21,7 @@ class WidgetController extends GetxController {
   }
 
   void handlePageChange(int index) {
-    if (index == items.length) {
+    if (index == 5) {
       // When user reaches the end → jump back to first item
       Future.delayed(Duration(milliseconds: 400), () {
         pageController.jumpToPage(0);
