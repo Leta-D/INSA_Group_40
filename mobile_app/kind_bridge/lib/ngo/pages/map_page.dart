@@ -35,7 +35,7 @@ class MapPage extends StatelessWidget {
                 style: GoogleFonts.damion(color: appDarkGreen(1), fontSize: 16),
               ),
               Container(
-                height: 500,
+                height: 700,
                 width: double.infinity,
                 margin: const EdgeInsets.only(top: 20),
                 padding: const EdgeInsets.all(5),
@@ -64,7 +64,7 @@ class MapPage extends StatelessWidget {
                       mapController: mapController.mapController,
                       options: MapOptions(
                         initialCenter: mapController.currentPosition.value!,
-                        initialZoom: 15.0,
+                        initialZoom: 13.0,
                         onPositionChanged: (_, __) {
                           mapController.followUser = false;
                         },
@@ -73,9 +73,16 @@ class MapPage extends StatelessWidget {
                       children: [
                         TileLayer(
                           urlTemplate:
-                              "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
-                          userAgentPackageName: "com.example.app",
+                              "https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=uZDMgqkvC3iESW0OPRtc",
+                          userAgentPackageName:
+                              "com.kindbridge.app", // your package name
                         ),
+
+                        // TileLayer(
+                        //   urlTemplate:
+                        //       "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                        //   userAgentPackageName: "com.example.app",
+                        // ),
                         MarkerLayer(
                           markers: [
                             Marker(
