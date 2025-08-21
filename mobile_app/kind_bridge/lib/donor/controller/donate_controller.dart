@@ -6,4 +6,7 @@ class DonateController extends GetxController {
   final titleController = TextEditingController();
   final descriptionController = TextEditingController();
   final quantityController = TextEditingController();
+
+  var donationCategory = "food".obs;
+  var availabilityTime = "morning".obs;
 }
