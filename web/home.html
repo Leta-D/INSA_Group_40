@@ -1,0 +1,938 @@
+<!-- home.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donor Connect - Volunteer Platform</title>
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="icon" href="logo.png" type="image/jpg" />
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <button id="menu-toggle" class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <h1>Donor Connect</h1>
+        </div>
+        <div class="search-bar">
+            <div class="search-container">
+                <input type="text" placeholder="Search donations, NGOs, items..." id="search-input">
+                <button id="search-button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+        <div class="header-icons">
+            <div class="header-icon" id="notification-icon">
+                <i class="fas fa-bell"></i>
+            </div>
+            <div class="header-icon" id="message-icon">
+                <i class="fas fa-envelope"></i>
+            </div>
+            <div class="header-icon" id="profile-icon">
+                <i class="fas fa-user"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Side Menu -->
+    <nav id="side-menu" class="side-menu">
+        <div class="user-profile">
+            <div class="profile-upload">
+                <img id="profile-pic" src="" alt="Profile Picture" class="profile-picture">
+                <input type="file" id="profile-upload" accept="image/*" class="profile-upload-input">
+                <div class="upload-overlay">
+                    <i class="fas fa-camera"></i>
+                </div>
+            </div>
+            <div class="user-info">
+                <h2 id="welcome-text">Welcome, Donor!</h2>
+                <p id="donated-items">Donated: 0 Items</p>
+            </div>
+        </div>
+        <ul class="menu-items" id="menu-items">
+            <li><a href="#"><i class="fas fa-home"></i> Dashboard</a></li>
+            <li><a href="#"><i class="fas fa-hand-holding-heart"></i> My Donations</a></li>
+            <li><a href="#"><i class="fas fa-search"></i> Find NGOs</a></li>
+            <li><a href="#" id="achievements-link"><i class="fas fa-certificate"></i> <span id="achievements-text">Donor Achievements</span></a></li>
+            <li><a href="#"><i class="fas fa-users"></i> Community</a></li>
+            <li><a href="#"><i class="fas fa-chart-line"></i> Impact Tracker</a></li>
+            <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+            <li><a href="#"><i class="fas fa-question-circle"></i> Help Center</a></li>
+        </ul>
+        <div class="additional-options">
+            <label for="dark-mode-switch">
+                <i class="fas fa-moon"></i>
+                <span class="dark-mode-text">Dark Mode</span>
+                <input type="checkbox" id="dark-mode-switch">
+            </label>
+        </div>
+        <div class="logout-container">
+            <button onclick="location.href='L001.html'" id="logout-button"><i class="fas fa-sign-out-alt"></i> Log Out</button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="content">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <h2>Small Acts, Big Changes</h2>
+            <p>Join thousands of donors making a difference in communities worldwide</p>
+            <div class="stats-container">
+                <div class="stat-item">
+                    <span class="stat-number">0</span>
+                    <span class="stat-label">Active Donors</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">0</span>
+                    <span class="stat-label">NGOs Connected</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">0</span>
+                    <span class="stat-label">Items Donated</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Clothes Donation Section -->
+        <section class="categories-section">
+            <h2 class="section-title">Clothes Donation</h2>
+            <div class="categories-grid">
+                <div class="category-card" data-category="shirts">
+                    <div class="category-header">Shirts & Tops</div>
+                    <div class="category-image">
+                        <img src="https://placehold.co/300x200/ef4444/ffffff?text=Shirts" alt="Shirts">
+                        <button class="applaud-button">
+                            <i class="fas fa-hand-peace"></i>
+                        </button>
+                        <div class="applaud-count">0</div>
+                    </div>
+                    <div class="category-items">
+                        <div class="item-grid">
+                            <div class="item">T-Shirts</div>
+                            <div class="item">Dress Shirts</div>
+                            <div class="item">Blouses</div>
+                            <div class="item">Tank Tops</div>
+                            <div class="item">Polo Shirts</div>
+                            <div class="item">Sweatshirts</div>
+                        </div>
+                    </div>
+                    <div class="donation-form-container">
+                        <form class="donation-form" data-type="clothes" data-subtype="shirts">
+                            <div class="form-group">
+                                <label for="shirts-quantity">Number of Items</label>
+                                <input type="number" min="1" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="shirts-condition">Condition</label>
+                                <select required>
+                                    <option value="">Select condition</option>
+                                    <option value="excellent">Excellent - Like new</option>
+                                    <option value="good">Good - Lightly used</option>
+                                    <option value="fair">Fair - Worn but usable</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="shirts-sizes">Available Sizes</label>
+                                <input type="text" placeholder="e.g., S, M, L, XL" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="shirts-image">Upload Images</label>
+                                <input type="file" accept="image/*" multiple required>
+                            </div>
+                            <div class="form-group">
+                                <label for="shirts-phone">Phone Number</label>
+                                <input type="tel" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="shirts-email">Email Address</label>
+                                <input type="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="shirts-location">Location</label>
+                                <input type="text" placeholder="City, State" required>
+                            </div>
+                            <button type="submit" class="submit-button">Submit Donation</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="category-card" data-category="coats">
+                    <div class="category-header">Coats & Jackets</div>
+                    <div class="category-image">
+                        <img src="https://placehold.co/300x200/6366f1/ffffff?text=Coats" alt="Coats">
+                        <button class="applaud-button">
+                            <i class="fas fa-hand-peace"></i>
+                        </button>
+                        <div class="applaud-count">0</div>
+                    </div>
+                    <div class="category-items">
+                        <div class="item-grid">
+                            <div class="item">Winter Coats</div>
+                            <div class="item">Rain Jackets</div>
+                            <div class="item">Windbreakers</div>
+                            <div class="item">Leather Jackets</div>
+                            <div class="item">Denim Jackets</div>
+                            <div class="item">Puffer Jackets</div>
+                        </div>
+                    </div>
+                    <div class="donation-form-container">
+                        <form class="donation-form" data-type="clothes" data-subtype="coats">
+                            <div class="form-group">
+                                <label for="coats-quantity">Number of Items</label>
+                                <input type="number" min="1" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="coats-condition">Condition</label>
+                                <select required>
+                                    <option value="">Select condition</option>
+                                    <option value="excellent">Excellent - Like new</option>
+                                    <option value="good">Good - Lightly used</option>
+                                    <option value="fair">Fair - Worn but usable</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="coats-season">Season</label>
+                                <select required>
+                                    <option value="">Select season</option>
+                                    <option value="winter">Winter</option>
+                                    <option value="fall">Fall</option>
+                                    <option value="spring">Spring</option>
+                                    <option value="all-season">All Season</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="coats-image">Upload Images</label>
+                                <input type="file" accept="image/*" multiple required>
+                            </div>
+                            <div class="form-group">
+                                <label for="coats-phone">Phone Number</label>
+                                <input type="tel" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="coats-email">Email Address</label>
+                                <input type="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="coats-location">Location</label>
+                                <input type="text" placeholder="City, State" required>
+                            </div>
+                            <button type="submit" class="submit-button">Submit Donation</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="category-card" data-category="trousers">
+                    <div class="category-header">Trousers & Pants</div>
+                    <div class="category-image">
+                        <img src="https://placehold.co/300x200/10b981/ffffff?text=Trousers" alt="Trousers">
+                        <button class="applaud-button">
+                            <i class="fas fa-hand-peace"></i>
+                        </button>
+                        <div class="applaud-count">0</div>
+                    </div>
+                    <div class="category-items">
+                        <div class="item-grid">
+                            <div class="item">Jeans</div>
+                            <div class="item">Chinos</div>
+                            <div class="item">Formal Pants</div>
+                            <div class="item">Shorts</div>
+                            <div class="item">Skirts</div>
+                            <div class="item">Leggings</div>
+                        </div>
+                    </div>
+                    <div class="donation-form-container">
+                        <form class="donation-form" data-type="clothes" data-subtype="trousers">
+                            <div class="form-group">
+                                <label for="trousers-quantity">Number of Items</label>
+                                <input type="number" min="1" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="trousers-condition">Condition</label>
+                                <select required>
+                                    <option value="">Select condition</option>
+                                    <option value="excellent">Excellent - Like new</option>
+                                    <option value="good">Good - Lightly used</option>
+                                    <option value="fair">Fair - Worn but usable</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="trousers-waist">Waist Measurement</label>
+                                <input type="text" placeholder="e.g., 32 inches" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="trousers-image">Upload Images</label>
+                                <input type="file" accept="image/*" multiple required>
+                            </div>
+                            <div class="form-group">
+                                <label for="trousers-phone">Phone Number</label>
+                                <input type="tel" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="trousers-email">Email Address</label>
+                                <input type="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="trousers-location">Location</label>
+                                <input type="text" placeholder="City, State" required>
+                            </div>
+                            <button type="submit" class="submit-button">Submit Donation</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="category-card" data-category="shoes">
+                    <div class="category-header">Shoes & Footwear</div>
+                    <div class="category-image">
+                        <img src="https://placehold.co/300x200/f59e0b/ffffff?text=Shoes" alt="Shoes">
+                        <button class="applaud-button">
+                            <i class="fas fa-hand-peace"></i>
+                        </button>
+                        <div class="applaud-count">0</div>
+                    </div>
+                    <div class="category-items">
+                        <div class="item-grid">
+                            <div class="item">Sneakers</div>
+                            <div class="item">Formal Shoes</div>
+                            <div class="item">Boots</div>
+                            <div class="item">Sandals</div>
+                            <div class="item">Slippers</div>
+                            <div class="item">Sports Shoes</div>
+                        </div>
+                    </div>
+                    <div class="donation-form-container">
+                        <form class="donation-form" data-type="clothes" data-subtype="shoes">
+                            <div class="form-group">
+                                <label for="shoes-quantity">Number of Pairs</label>
+                                <input type="number" min="1" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="shoes-condition">Condition</label>
+                                <select required>
+                                    <option value="">Select condition</option>
+                                    <option value="excellent">Excellent - Like new</option>
+                                    <option value="good">Good - Lightly used</option>
+                                    <option value="fair">Fair - Worn but usable</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="shoes-gender">Gender</label>
+                                <select required>
+                                    <option value="">Select gender</option>
+                                    <option value="men">Men</option>
+                                    <option value="women">Women</option>
+                                    <option value="unisex">Unisex</option>
+                                    <option value="kids">Kids</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="shoes-image">Upload Images</label>
+                                <input type="file" accept="image/*" multiple required>
+                            </div>
+                            <div class="form-group">
+                                <label for="shoes-phone">Phone Number</label>
+                                <input type="tel" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="shoes-email">Email Address</label>
+                                <input type="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="shoes-location">Location</label>
+                                <input type="text" placeholder="City, State" required>
+                            </div>
+                            <button type="submit" class="submit-button">Submit Donation</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="category-card" data-category="others">
+                    <div class="category-header">Other Clothing</div>
+                    <div class="category-image">
+                        <img src="https://placehold.co/300x200/8b5cf6/ffffff?text=Others" alt="Others">
+                        <button class="applaud-button">
+                            <i class="fas fa-hand-peace"></i>
+                        </button>
+                        <div class="applaud-count">0</div>
+                    </div>
+                    <div class="category-items">
+                        <div class="item-grid">
+                            <div class="item">Dresses</div>
+                            <div class="item">Suits</div>
+                            <div class="item">Accessories</div>
+                            <div class="item">Undergarments</div>
+                            <div class="item">Sportswear</div>
+                            <div class="item">Swimwear</div>
+                        </div>
+                    </div>
+                    <div class="donation-form-container">
+                        <form class="donation-form" data-type="clothes" data-subtype="others">
+                            <div class="form-group">
+                                <label for="others-quantity">Number of Items</label>
+                                <input type="number" min="1" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="others-condition">Condition</label>
+                                <select required>
+                                    <option value="">Select condition</option>
+                                    <option value="excellent">Excellent - Like new</option>
+                                    <option value="good">Good - Lightly used</option>
+                                    <option value="fair">Fair - Worn but usable</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="others-category">Category</label>
+                                <select required>
+                                    <option value="">Select category</option>
+                                    <option value="dresses">Dresses & Gowns</option>
+                                    <option value="suits">Suits & Formal Wear</option>
+                                    <option value="accessories">Accessories</option>
+                                    <option value="undergarments">Undergarments</option>
+                                    <option value="sportswear">Sportswear</option>
+                                    <option value="swimwear">Swimwear</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="others-image">Upload Images</label>
+                                <input type="file" accept="image/*" multiple required>
+                            </div>
+                            <div class="form-group">
+                                <label for="others-phone">Phone Number</label>
+                                <input type="tel" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="others-email">Email Address</label>
+                                <input type="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="others-location">Location</label>
+                                <input type="text" placeholder="City, State" required>
+                            </div>
+                            <button type="submit" class="submit-button">Submit Donation</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Food Donation Section -->
+        <section class="categories-section">
+            <h2 class="section-title">Food Donation</h2>
+            <div class="categories-grid">
+                <div class="category-card" data-category="food">
+                    <div class="category-header">Fresh Food</div>
+                    <div class="category-image">
+                        <img src="https://placehold.co/300x200/10b981/ffffff?text=Fresh+Food" alt="Fresh Food">
+                        <button class="applaud-button">
+                            <i class="fas fa-hand-peace"></i>
+                        </button>
+                        <div class="applaud-count">0</div>
+                    </div>
+                    <div class="category-items">
+                        <div class="item-grid">
+                            <div class="item">Fruits</div>
+                            <div class="item">Vegetables</div>
+                            <div class="item">Dairy</div>
+                            <div class="item">Bakery</div>
+                            <div class="item">Meat & Poultry</div>
+                            <div class="item">Seafood</div>
+                        </div>
+                    </div>
+                    <div class="donation-form-container">
+                        <form class="donation-form" data-type="food" data-subtype="food">
+                            <div class="form-group">
+                                <label for="food-quantity">Quantity (kg/lbs)</label>
+                                <input type="text" placeholder="e.g., 5 kg, 10 lbs" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="food-type">Food Type</label>
+                                <select required>
+                                    <option value="">Select food type</option>
+                                    <option value="fruits">Fruits</option>
+                                    <option value="vegetables">Vegetables</option>
+                                    <option value="dairy">Dairy Products</option>
+                                    <option value="bakery">Bakery Items</option>
+                                    <option value="canned">Canned Goods</option>
+                                    <option value="dry">Dry Goods</option>
+                                    <option value="prepared">Prepared Meals</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="food-expiry">Expiry Date</label>
+                                <input type="date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="food-storage">Storage Requirements</label>
+                                <select required>
+                                    <option value="">Select storage</option>
+                                    <option value="room">Room Temperature</option>
+                                    <option value="refrigerated">Refrigerated</option>
+                                    <option value="frozen">Frozen</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="food-image">Upload Images</label>
+                                <input type="file" accept="image/*" multiple required>
+                            </div>
+                            <div class="form-group">
+                                <label for="food-phone">Phone Number</label>
+                                <input type="tel" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="food-email">Email Address</label>
+                                <input type="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="food-location">Location</label>
+                                <input type="text" placeholder="City, State" required>
+                            </div>
+                            <button type="submit" class="submit-button">Submit Donation</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Items Donation Section -->
+        <section class="categories-section">
+            <h2 class="section-title">Item Donation</h2>
+            <div class="categories-grid">
+                <div class="category-card" data-category="furniture">
+                    <div class="category-header">Furniture</div>
+                    <div class="category-image">
+                        <img src="https://placehold.co/300x200/64748b/ffffff?text=Furniture" alt="Furniture">
+                        <button class="applaud-button">
+                            <i class="fas fa-hand-peace"></i>
+                        </button>
+                        <div class="applaud-count">0</div>
+                    </div>
+                    <div class="category-items">
+                        <div class="item-grid">
+                            <div class="item">Chairs</div>
+                            <div class="item">Tables</div>
+                            <div class="item">Beds</div>
+                            <div class="item">Sofas</div>
+                            <div class="item">Cabinets</div>
+                            <div class="item">Desks</div>
+                        </div>
+                    </div>
+                    <div class="donation-form-container">
+                        <form class="donation-form" data-type="items" data-subtype="furniture">
+                            <div class="form-group">
+                                <label for="furniture-quantity">Number of Items</label>
+                                <input type="number" min="1" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="furniture-condition">Condition</label>
+                                <select required>
+                                    <option value="">Select condition</option>
+                                    <option value="excellent">Excellent - Like new</option>
+                                    <option value="good">Good - Lightly used</option>
+                                    <option value="fair">Fair - Usable with minor repairs</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="furniture-size">Approximate Size</label>
+                                <select required>
+                                    <option value="">Select size</option>
+                                    <option value="small">Small (Easy to carry)</option>
+                                    <option value="medium">Medium (Requires 2 people)</option>
+                                    <option value="large">Large (Requires vehicle)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="furniture-image">Upload Images</label>
+                                <input type="file" accept="image/*" multiple required>
+                            </div>
+                            <div class="form-group">
+                                <label for="furniture-phone">Phone Number</label>
+                                <input type="tel" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="furniture-email">Email Address</label>
+                                <input type="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="furniture-location">Location</label>
+                                <input type="text" placeholder="City, State" required>
+                            </div>
+                            <button type="submit" class="submit-button">Submit Donation</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="category-card" data-category="electronics">
+                    <div class="category-header">Electronics</div>
+                    <div class="category-image">
+                        <img src="https://placehold.co/300x200/374151/ffffff?text=Electronics" alt="Electronics">
+                        <button class="applaud-button">
+                            <i class="fas fa-hand-peace"></i>
+                        </button>
+                        <div class="applaud-count">0</div>
+                    </div>
+                    <div class="category-items">
+                        <div class="item-grid">
+                            <div class="item">Phones</div>
+                            <div class="item">Laptops</div>
+                            <div class="item">Tablets</div>
+                            <div class="item">Appliances</div>
+                            <div class="item">TVs</div>
+                            <div class="item">Audio Devices</div>
+                        </div>
+                    </div>
+                    <div class="donation-form-container">
+                        <form class="donation-form" data-type="items" data-subtype="electronics">
+                            <div class="form-group">
+                                <label for="electronics-quantity">Number of Items</label>
+                                <input type="number" min="1" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="electronics-condition">Condition</label>
+                                <select required>
+                                    <option value="">Select condition</option>
+                                    <option value="working">Fully Working</option>
+                                    <option value="minor">Minor Issues</option>
+                                    <option value="non-working">Non-Working (for parts)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="electronics-age">Approximate Age</label>
+                                <select required>
+                                    <option value="">Select age</option>
+                                    <option value="less-1">Less than 1 year</option>
+                                    <option value="1-3">1-3 years</option>
+                                    <option value="3-5">3-5 years</option>
+                                    <option value="5-more">More than 5 years</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="electronics-image">Upload Images</label>
+                                <input type="file" accept="image/*" multiple required>
+                            </div>
+                            <div class="form-group">
+                                <label for="electronics-phone">Phone Number</label>
+                                <input type="tel" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="electronics-email">Email Address</label>
+                                <input type="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="electronics-location">Location</label>
+                                <input type="text" placeholder="City, State" required>
+                            </div>
+                            <button type="submit" class="submit-button">Submit Donation</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="category-card" data-category="books">
+                    <div class="category-header">Books & Education</div>
+                    <div class="category-image">
+                        <img src="https://placehold.co/300x200/059669/ffffff?text=Books" alt="Books">
+                        <button class="applaud-button">
+                            <i class="fas fa-hand-peace"></i>
+                        </button>
+                        <div class="applaud-count">0</div>
+                    </div>
+                    <div class="category-items">
+                        <div class="item-grid">
+                            <div class="item">Textbooks</div>
+                            <div class="item">Novels</div>
+                            <div class="item">Children's books</div>
+                            <div class="item">School Supplies</div>
+                            <div class="item">Learning Tools</div>
+                            <div class="item">Magazines</div>
+                        </div>
+                    </div>
+                    <div class="donation-form-container">
+                        <form class="donation-form" data-type="items" data-subtype="books">
+                            <div class="form-group">
+                                <label for="books-quantity">Number of Items</label>
+                                <input type="number" min="1" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="books-condition">Condition</label>
+                                <select required>
+                                    <option value="">Select condition</option>
+                                    <option value="excellent">Excellent - Like new</option>
+                                    <option value="good">Good - Lightly used</option>
+                                    <option value="fair">Fair - Readable with minor damage</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="books-category">Category</label>
+                                <select required>
+                                    <option value="">Select category</option>
+                                    <option value="textbooks">Textbooks & Academic</option>
+                                    <option value="fiction">Fiction & Novels</option>
+                                    <option value="children">Children's Books</option>
+                                    <option value="education">Educational Materials</option>
+                                    <option value="professional">Professional Development</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="books-image">Upload Images</label>
+                                <input type="file" accept="image/*" multiple required>
+                            </div>
+                            <div class="form-group">
+                                <label for="books-phone">Phone Number</label>
+                                <input type="tel" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="books-email">Email Address</label>
+                                <input type="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="books-location">Location</label>
+                                <input type="text" placeholder="City, State" required>
+                            </div>
+                            <button type="submit" class="submit-button">Submit Donation</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="category-card" data-category="toys">
+                    <div class="category-header">Toys & Games</div>
+                    <div class="category-image">
+                        <img src="https://placehold.co/300x200/d97706/ffffff?text=Toys" alt="Toys">
+                        <button class="applaud-button">
+                            <i class="fas fa-hand-peace"></i>
+                        </button>
+                        <div class="applaud-count">0</div>
+                    </div>
+                    <div class="category-items">
+                        <div class="item-grid">
+                            <div class="item">Action Figures</div>
+                            <div class="item">Board Games</div>
+                            <div class="item">Puzzles</div>
+                            <div class="item">Educational Toys</div>
+                            <div class="item">Dolls</div>
+                            <div class="item">Outdoor Toys</div>
+                        </div>
+                    </div>
+                    <div class="donation-form-container">
+                        <form class="donation-form" data-type="items" data-subtype="toys">
+                            <div class="form-group">
+                                <label for="toys-quantity">Number of Items</label>
+                                <input type="number" min="1" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="toys-condition">Condition</label>
+                                <select required>
+                                    <option value="">Select condition</option>
+                                    <option value="excellent">Excellent - Like new</option>
+                                    <option value="good">Good - Lightly used</option>
+                                    <option value="fair">Fair - Usable with minor damage</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="toys-age">Recommended Age Group</label>
+                                <select required>
+                                    <option value="">Select age group</option>
+                                    <option value="0-2">0-2 years</option>
+                                    <option value="3-5">3-5 years</option>
+                                    <option value="6-8">6-8 years</option>
+                                    <option value="9-12">9-12 years</option>
+                                    <option value="13-plus">13+ years</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="toys-image">Upload Images</label>
+                                <input type="file" accept="image/*" multiple required>
+                            </div>
+                            <div class="form-group">
+                                <label for="toys-phone">Phone Number</label>
+                                <input type="tel" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="toys-email">Email Address</label>
+                                <input type="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="toys-location">Location</label>
+                                <input type="text" placeholder="City, State" required>
+                            </div>
+                            <button type="submit" class="submit-button">Submit Donation</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="category-card" data-category="others-items">
+                    <div class="category-header">Other Items</div>
+                    <div class="category-image">
+                        <img src="https://placehold.co/300x200/6b7280/ffffff?text=Others" alt="Other Items">
+                        <button class="applaud-button">
+                            <i class="fas fa-hand-peace"></i>
+                        </button>
+                        <div class="applaud-count">0</div>
+                    </div>
+                    <div class="category-items">
+                        <div class="item-grid">
+                            <div class="item">Sports Equipment</div>
+                            <div class="item">Musical Instruments</div>
+                            <div class="item">Art Supplies</div>
+                            <div class="item">Gardening Tools</div>
+                            <div class="item">Kitchenware</div>
+                            <div class="item">Decorative Items</div>
+                        </div>
+                    </div>
+                    <div class="donation-form-container">
+                        <form class="donation-form" data-type="items" data-subtype="others">
+                            <div class="form-group">
+                                <label for="others-items-quantity">Number of Items</label>
+                                <input type="number" min="1" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="others-items-condition">Condition</label>
+                                <select required>
+                                    <option value="">Select condition</option>
+                                    <option value="excellent">Excellent - Like new</option>
+                                    <option value="good">Good - Lightly used</option>
+                                    <option value="fair">Fair - Usable with minor damage</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="others-items-type">Item Type</label>
+                                <input type="text" placeholder="e.g., Sports equipment, Musical instruments" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="others-items-image">Upload Images</label>
+                                <input type="file" accept="image/*" multiple required>
+                            </div>
+                            <div class="form-group">
+                                <label for="others-items-phone">Phone Number</label>
+                                <input type="tel" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="others-items-email">Email Address</label>
+                                <input type="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="others-items-location">Location</label>
+                                <input type="text" placeholder="City, State" required>
+                            </div>
+                            <button type="submit" class="submit-button">Submit Donation</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features-section">
+            <h2 class="section-title">Why Donate With Us?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Verified NGOs</h3>
+                    <p class="feature-desc">All partner organizations are thoroughly vetted and verified to ensure your donations reach those in need.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3 class="feature-title">Free Pickup</h3>
+                    <p class="feature-desc">Schedule a free pickup for your donations at your convenience with our nationwide logistics network.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3 class="feature-title">Impact Tracking</h3>
+                    <p class="feature-desc">See exactly where your donations go and the positive impact they're making in real-time.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3 class="feature-title">Tax Benefits</h3>
+                    <p class="feature-desc">Receive official receipts for tax deductions and maximize the value of your charitable contributions.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Donation History Section -->
+        <section class="history-section">
+            <h2 class="section-title">Donation History</h2>
+            <div class="history-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="clothes">Clothes</button>
+                <button class="filter-btn" data-filter="food">Food</button>
+                <button class="filter-btn" data-filter="items">Items</button>
+                <button class="filter-btn" data-filter="pending">Pending</button>
+                <button class="filter-btn" data-filter="completed">Completed</button>
+            </div>
+            <div class="history-grid" id="history-grid">
+                <div class="empty-history">
+                    <i class="fas fa-box-open" style="font-size: 60px; color: #e2e8f0; margin-bottom: 15px;"></i>
+                    <p>No donation history yet. Your donations will appear here.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>About Us</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-info-circle"></i> Our Mission</a></li>
+                    <li><a href="#"><i class="fas fa-building"></i> Organization</a></li>
+                    <li><a href="#"><i class="fas fa-users"></i> Team</a></li>
+                    <li><a href="#"><i class="fas fa-award"></i> Awards</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Get Involved</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-hand-holding-heart"></i> Donate Items</a></li>
+                    <li><a href="#"><i class="fas fa-volunteer-activism"></i> Volunteer</a></li>
+                    <li><a href="#"><i class="fas fa-hands-helping"></i> Partner with Us</a></li>
+                    <li><a href="#"><i class="fas fa-heart"></i> Sponsorship</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-book"></i> Guides & Tips</a></li>
+                    <li><a href="#"><i class="fas fa-chart-line"></i> Impact Reports</a></li>
+                    <li><a href="#"><i class="fas fa-certificate"></i> Tax Benefits</a></li>
+                    <li><a href="#"><i class="fas fa-question-circle"></i> FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> Addis Ababa, City</a></li>
+                    <li><a href="tel:+251951164616"><i class="fas fa-phone"></i> (+251)878724098</a></li>
+                    <li><a href="mailto:info@kindbridge.org"><i class="fas fa-envelope"></i> kindbridge.org</a></li>
+                    <li>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 kindbridge. All rights reserved. | Privacy Policy | Terms of Service</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">Donation submitted successfully!</div>
+
+    <script src="home.js"></script>
+</body>
+</html>
