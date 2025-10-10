@@ -1,14 +1,14 @@
 from pydantic import BaseModel
 
-class DonorBase(BaseModel):
+class UserBase(BaseModel):
     name: str
     email: str
 
-class DonorCreate(DonorBase):
+class UserCreate(UserBase):
     pass
 
-class DonorResponse(DonorBase):
+class UserOut(UserBase):
     id: int
 
     class Config:
-        from_attributes = True
+        orm_mode = True

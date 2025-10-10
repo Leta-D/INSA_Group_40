@@ -1,12 +1,12 @@
 from sqlalchemy.orm import Session
-from . import models, schemas
+from app import models, schemas
 
-def create_donor(db: Session, donor: schemas.DonorCreate):
-    db_donor = models.Donor(name=donor.name, email=donor.email)
-    db.add(db_donor)
+def get_users(db: Session):
+    return db.query(models.User).all()
+
+def create_user(db: Session, user: schemas.UserCreate):
+    db_user = models.User(name=user.name, email=user.email)
+    db.add(db_user)
     db.commit()
-    db.refresh(db_donor)
-    return db_donor
-
-def get_donors(db: Session, skip: int = 0, limit: int = 10):
-    return db.query(models.Donor).offset(skip).limit(limit).all()
+    db.refresh(db_user)
+    return db_user

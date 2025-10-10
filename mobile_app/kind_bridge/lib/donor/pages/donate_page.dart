@@ -91,67 +91,71 @@ class DonatePage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    DropdownMenu(
-                      hintText: "Tap to select a donation category",
-                      width: 280,
-                      onSelected: (value) {
-                        donateController.donationCategory.value =
-                            value ?? "food";
-                      },
-                      dropdownMenuEntries: [
-                        DropdownMenuEntry(
-                          value: "food",
-                          label: "Food and Nutrition",
-                          style:
-                              donateController.donationCategory.value == 'food'
-                                  ? dropDownButtonStyle()
-                                  : ButtonStyle(),
-                        ),
-                        DropdownMenuEntry(
-                          value: "cloth",
-                          label: "Cloth and Personal Items",
-                          style:
-                              donateController.donationCategory.value == 'cloth'
-                                  ? dropDownButtonStyle()
-                                  : ButtonStyle(),
-                        ),
-                        DropdownMenuEntry(
-                          value: "health",
-                          label: "Health and Hygiene",
-                          style:
-                              donateController.donationCategory.value ==
-                                      'health'
-                                  ? dropDownButtonStyle()
-                                  : ButtonStyle(),
-                        ),
-                        DropdownMenuEntry(
-                          value: "electronics",
-                          label: "Electronics and Tech",
-                          style:
-                              donateController.donationCategory.value ==
-                                      'electronics'
-                                  ? dropDownButtonStyle()
-                                  : ButtonStyle(),
-                        ),
-                        DropdownMenuEntry(
-                          value: "education",
-                          label: "Education and Learning",
-                          style:
-                              donateController.donationCategory.value ==
-                                      'education'
-                                  ? dropDownButtonStyle()
-                                  : ButtonStyle(),
-                        ),
-                        DropdownMenuEntry(
-                          value: "household",
-                          label: "Household",
-                          style:
-                              donateController.donationCategory.value ==
-                                      'household'
-                                  ? dropDownButtonStyle()
-                                  : ButtonStyle(),
-                        ),
-                      ],
+                    Obx(
+                      () => DropdownMenu(
+                        hintText: "Tap to select a donation category",
+                        width: 280,
+                        onSelected: (value) {
+                          donateController.donationCategory.value =
+                              value ?? "food";
+                        },
+                        dropdownMenuEntries: [
+                          DropdownMenuEntry(
+                            value: "food",
+                            label: "Food and Nutrition",
+                            style:
+                                donateController.donationCategory.value ==
+                                        'food'
+                                    ? dropDownButtonStyle()
+                                    : ButtonStyle(),
+                          ),
+                          DropdownMenuEntry(
+                            value: "cloth",
+                            label: "Cloth and Personal Items",
+                            style:
+                                donateController.donationCategory.value ==
+                                        'cloth'
+                                    ? dropDownButtonStyle()
+                                    : ButtonStyle(),
+                          ),
+                          DropdownMenuEntry(
+                            value: "health",
+                            label: "Health and Hygiene",
+                            style:
+                                donateController.donationCategory.value ==
+                                        'health'
+                                    ? dropDownButtonStyle()
+                                    : ButtonStyle(),
+                          ),
+                          DropdownMenuEntry(
+                            value: "electronics",
+                            label: "Electronics and Tech",
+                            style:
+                                donateController.donationCategory.value ==
+                                        'electronics'
+                                    ? dropDownButtonStyle()
+                                    : ButtonStyle(),
+                          ),
+                          DropdownMenuEntry(
+                            value: "education",
+                            label: "Education and Learning",
+                            style:
+                                donateController.donationCategory.value ==
+                                        'education'
+                                    ? dropDownButtonStyle()
+                                    : ButtonStyle(),
+                          ),
+                          DropdownMenuEntry(
+                            value: "household",
+                            label: "Household",
+                            style:
+                                donateController.donationCategory.value ==
+                                        'household'
+                                    ? dropDownButtonStyle()
+                                    : ButtonStyle(),
+                          ),
+                        ],
+                      ),
                     ),
 
                     Padding(
@@ -270,6 +274,7 @@ class DonatePage extends StatelessWidget {
                             width: 50,
                             height: 50,
                             fit: BoxFit.cover,
+                            alignment: Alignment.bottomCenter,
                           ),
                         );
                         commonController
@@ -359,42 +364,45 @@ class DonatePage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    DropdownMenu(
-                      hintText: "Select pickup time",
-                      width: 280,
-                      initialSelection: "both",
-                      onSelected: (value) {
-                        donateController.availabilityTime.value =
-                            value ?? "both";
-                      },
-                      dropdownMenuEntries: [
-                        DropdownMenuEntry(
-                          value: "morning",
-                          label: "Morning (1 am - 4:30 am)",
-                          style:
-                              donateController.availabilityTime.value ==
-                                      'morning'
-                                  ? dropDownButtonStyle()
-                                  : ButtonStyle(),
-                        ),
-                        DropdownMenuEntry(
-                          value: "afternoon",
-                          label: "Afternoon (6 pm - 11:30 pm)",
-                          style:
-                              donateController.availabilityTime.value ==
-                                      'afternoon'
-                                  ? dropDownButtonStyle()
-                                  : ButtonStyle(),
-                        ),
-                        DropdownMenuEntry(
-                          value: "both",
-                          label: "Both (Morning or Afternoon)",
-                          style:
-                              donateController.availabilityTime.value == 'both'
-                                  ? dropDownButtonStyle()
-                                  : ButtonStyle(),
-                        ),
-                      ],
+                    Obx(
+                      () => DropdownMenu(
+                        hintText: "Select pickup time",
+                        width: 280,
+                        initialSelection: "both",
+                        onSelected: (value) {
+                          donateController.availabilityTime.value =
+                              value ?? "both";
+                        },
+                        dropdownMenuEntries: [
+                          DropdownMenuEntry(
+                            value: "morning",
+                            label: "Morning (1 am - 4:30 am)",
+                            style:
+                                donateController.availabilityTime.value ==
+                                        'morning'
+                                    ? dropDownButtonStyle()
+                                    : ButtonStyle(),
+                          ),
+                          DropdownMenuEntry(
+                            value: "afternoon",
+                            label: "Afternoon (6 pm - 11:30 pm)",
+                            style:
+                                donateController.availabilityTime.value ==
+                                        'afternoon'
+                                    ? dropDownButtonStyle()
+                                    : ButtonStyle(),
+                          ),
+                          DropdownMenuEntry(
+                            value: "both",
+                            label: "Both (Morning or Afternoon)",
+                            style:
+                                donateController.availabilityTime.value ==
+                                        'both'
+                                    ? dropDownButtonStyle()
+                                    : ButtonStyle(),
+                          ),
+                        ],
+                      ),
                     ),
 
                     Padding(

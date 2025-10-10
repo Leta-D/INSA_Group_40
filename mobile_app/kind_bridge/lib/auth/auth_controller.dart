@@ -30,6 +30,15 @@ class AuthController extends GetxController {
             if (result == null) {
               // Successfully signed up
               print("User signed up successfully");
+              // Get.snackbar(
+              //   "Signup Failed",
+              //   result,
+              //   snackStyle: SnackStyle.FLOATING,
+              //   snackPosition: SnackPosition.TOP,
+              //   backgroundColor: appRed(0.4),
+              //   colorText: appWhite(1),
+              //   duration: Duration(seconds: 2),
+              // );
               // Optionally, navigate to the home page or another page after successful signup
               // Get.to(HomePage());
             } else {
